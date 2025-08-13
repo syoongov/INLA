@@ -1,0 +1,15 @@
+{
+  "hash": "e4b6ed62604533f5182b1f0be8ea8328",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Data Preparation and Integration\"\nformat: bookup-html\n---\n\n# Data Sources and Integration Framework\n\n## Overview\nThis section transforms raw administrative data into a research-ready spatial dataset suitable for advanced Bayesian analysis.\n\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

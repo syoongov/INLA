@@ -1,0 +1,20 @@
+---
+title: "Spatial Modeling with INLA-BYM2"
+format: bookup-html
+---
+
+# INLA-BYM2 Spatial Model Specification
+
+## Theoretical Foundation
+
+**What This Section Accomplishes:**
+The INLA-BYM2 framework operationalizes spatial capabilities theory through hierarchical Bayesian structure that decomposes spatial variation into theoretically meaningful components.
+
+```{r inla-setup}
+library(INLA)
+library(sf)
+library(spdep)
+
+# Your INLA setup code here
+```
+

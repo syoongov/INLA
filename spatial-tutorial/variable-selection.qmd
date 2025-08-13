@@ -1,0 +1,21 @@
+---
+title: "Variable Selection: Bayesian Model Averaging"
+format: bookup-html
+---
+
+# Bayesian Model Averaging for Variable Selection
+
+## Theoretical Justification
+
+**What This Section Accomplishes:**
+BMA systematically evaluates which variables should be included in the final spatial model by considering all possible combinations and weighting them by statistical evidence. This handles model uncertainty inherent in complex social processes.
+
+```{r bma-setup}
+library(BMA)
+library(tidyverse)
+library(plotly)
+
+# Your BMA setup code here
+
+```
+

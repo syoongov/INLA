@@ -1,0 +1,100 @@
+[
+  {
+    "objectID": "methodology.html",
+    "href": "methodology.html",
+    "title": "Data Preparation and Integration",
+    "section": "",
+    "text": "This section transforms raw administrative data into a research-ready spatial dataset suitable for advanced Bayesian analysis."
+  },
+  {
+    "objectID": "methodology.html#overview",
+    "href": "methodology.html#overview",
+    "title": "Data Preparation and Integration",
+    "section": "",
+    "text": "This section transforms raw administrative data into a research-ready spatial dataset suitable for advanced Bayesian analysis."
+  },
+  {
+    "objectID": "model-validation.html",
+    "href": "model-validation.html",
+    "title": "Model Validation and Diagnostics",
+    "section": "",
+    "text": "1 Model Validation Framework\nWhat This Section Accomplishes: This validates the spatial model by examining residuals and testing model adequacy to ensure reliable inference for policy recommendations.\n[Your validation content…]"
+  },
+  {
+    "objectID": "policy.html",
+    "href": "policy.html",
+    "title": "Policy Applications and Recommendations",
+    "section": "",
+    "text": "1 Translating Research to Policy\nThis chapter demonstrates how spatial analysis informs evidence-based policy…\n[Your policy content]"
+  },
+  {
+    "objectID": "variable-selection.html",
+    "href": "variable-selection.html",
+    "title": "Variable Selection: Bayesian Model Averaging",
+    "section": "",
+    "text": "What This Section Accomplishes: BMA systematically evaluates which variables should be included in the final spatial model by considering all possible combinations and weighting them by statistical evidence. This handles model uncertainty inherent in complex social processes.\n\nCodelibrary(BMA)\nlibrary(tidyverse)\nlibrary(plotly)\n\n# Your BMA setup code here"
+  },
+  {
+    "objectID": "variable-selection.html#theoretical-justification",
+    "href": "variable-selection.html#theoretical-justification",
+    "title": "Variable Selection: Bayesian Model Averaging",
+    "section": "",
+    "text": "What This Section Accomplishes: BMA systematically evaluates which variables should be included in the final spatial model by considering all possible combinations and weighting them by statistical evidence. This handles model uncertainty inherent in complex social processes.\n\nCodelibrary(BMA)\nlibrary(tidyverse)\nlibrary(plotly)\n\n# Your BMA setup code here"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Spatial Capabilities and Community Corrections",
+    "section": "",
+    "text": "This interactive tutorial demonstrates how to integrate spatial capabilities theory with Integrated Nested Laplace Approximation (INLA) methodology.\n\n\n\n\n\nComplete workflow from data preparation through spatial modeling:\n\nData Preparation - Cleaning and integration\nVariable Selection - Bayesian Model Averaging\n\nSpatial Modeling - INLA-BYM2 implementation\nModel Validation - Diagnostics and testing\n\n\n\n\nAnalysis results and policy translation:\n\nResults - Key findings and spatial patterns\nPolicy Applications - Evidence-based recommendations\nAbout - Background and context\n\n\n\n\n\n\n\n\n\n\n\n\nReady to Begin?\n\n\n\nStart with Data Preparation to see the complete workflow, or jump to any section using the navigation menu."
+  },
+  {
+    "objectID": "index.html#tutorial-sections",
+    "href": "index.html#tutorial-sections",
+    "title": "Spatial Capabilities and Community Corrections",
+    "section": "",
+    "text": "Complete workflow from data preparation through spatial modeling:\n\nData Preparation - Cleaning and integration\nVariable Selection - Bayesian Model Averaging\n\nSpatial Modeling - INLA-BYM2 implementation\nModel Validation - Diagnostics and testing\n\n\n\n\nAnalysis results and policy translation:\n\nResults - Key findings and spatial patterns\nPolicy Applications - Evidence-based recommendations\nAbout - Background and context"
+  },
+  {
+    "objectID": "index.html#getting-started",
+    "href": "index.html#getting-started",
+    "title": "Spatial Capabilities and Community Corrections",
+    "section": "",
+    "text": "Ready to Begin?\n\n\n\nStart with Data Preparation to see the complete workflow, or jump to any section using the navigation menu."
+  },
+  {
+    "objectID": "spatial-modeling.html",
+    "href": "spatial-modeling.html",
+    "title": "Spatial Modeling with INLA-BYM2",
+    "section": "",
+    "text": "What This Section Accomplishes: The INLA-BYM2 framework operationalizes spatial capabilities theory through hierarchical Bayesian structure that decomposes spatial variation into theoretically meaningful components.\n\nCodelibrary(INLA)\nlibrary(sf)\nlibrary(spdep)\n\n# Your INLA setup code here"
+  },
+  {
+    "objectID": "spatial-modeling.html#theoretical-foundation",
+    "href": "spatial-modeling.html#theoretical-foundation",
+    "title": "Spatial Modeling with INLA-BYM2",
+    "section": "",
+    "text": "What This Section Accomplishes: The INLA-BYM2 framework operationalizes spatial capabilities theory through hierarchical Bayesian structure that decomposes spatial variation into theoretically meaningful components.\n\nCodelibrary(INLA)\nlibrary(sf)\nlibrary(spdep)\n\n# Your INLA setup code here"
+  },
+  {
+    "objectID": "results.html",
+    "href": "results.html",
+    "title": "Results and Spatial Analysis",
+    "section": "",
+    "text": "1 Key Findings\nThis chapter presents the main results from the INLA-BYM2 spatial analysis…\n[Your results content]"
+  },
+  {
+    "objectID": "data-preparation.html",
+    "href": "data-preparation.html",
+    "title": "Data Preparation and Integration",
+    "section": "",
+    "text": "This section transforms raw administrative data into a research-ready spatial dataset suitable for advanced Bayesian analysis."
+  },
+  {
+    "objectID": "data-preparation.html#overview",
+    "href": "data-preparation.html#overview",
+    "title": "Data Preparation and Integration",
+    "section": "",
+    "text": "This section transforms raw administrative data into a research-ready spatial dataset suitable for advanced Bayesian analysis."
+  }
+]

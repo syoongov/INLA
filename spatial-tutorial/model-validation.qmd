@@ -1,0 +1,11 @@
+---
+title: "Model Validation and Diagnostics"
+format: bookup-html
+---
+
+# Model Validation Framework
+
+**What This Section Accomplishes:**
+This validates the spatial model by examining residuals and testing model adequacy to ensure reliable inference for policy recommendations.
+
+[Your validation content...]

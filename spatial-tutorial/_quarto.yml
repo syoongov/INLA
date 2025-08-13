@@ -1,0 +1,54 @@
+project:
+  type: website
+
+website:
+  title: "Spatial Capabilities and Community Corrections"
+  search: true
+  reader-mode: true
+  navbar:
+    background: "#2e3f58"
+    left:
+      - href: index.qmd
+        text: Home
+      - text: "Methodology"
+        menu:
+          - href: data-preparation.qmd
+            text: "Data Preparation"
+          - href: variable-selection.qmd  
+            text: "Variable Selection (BMA)"
+          - href: spatial-modeling.qmd
+            text: "Spatial Modeling (INLA)"
+          - href: model-validation.qmd
+            text: "Model Validation"
+      - href: results.qmd
+        text: "Results"
+      - href: policy.qmd
+        text: "Policy Applications"
+      - href: about.qmd
+        text: "About"
+
+# Keep your existing format but add more options
+format:
+  bookup-html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    code-fold: true
+    code-tools: true
+    code-link: true
+    fig-width: 10
+    fig-height: 6
+    fig-dpi: 300
+    embed-resources: false
+    smooth-scroll: true
+    link-external-newwindow: true
+
+execute:
+  warning: false
+  message: false
+  cache: true
+  freeze: auto
+  error: false 
+  
+  

@@ -1,0 +1,10 @@
+---
+title: "Results and Spatial Analysis"
+format: bookup-html
+---
+
+# Key Findings
+
+This chapter presents the main results from the INLA-BYM2 spatial analysis...
+
+[Your results content]

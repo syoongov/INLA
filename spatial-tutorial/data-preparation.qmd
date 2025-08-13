@@ -1,0 +1,26 @@
+---
+title: "Data Preparation and Integration"
+format: bookup-html
+---
+
+# Data Sources and Integration Framework
+
+## Overview
+This section transforms raw administrative data into a research-ready spatial dataset suitable for advanced Bayesian analysis.
+
+```{r setup-data-prep, include=FALSE}
+# Load required libraries
+library(tidyverse)
+library(sf)
+library(tidycensus)
+library(tigris)
+library(spdep)
+library(DT)
+library(kableExtra)
+library(plotly)
+
+# Set options
+options(tigris_use_cache = TRUE)
+sf_use_s2(FALSE)
+```
+

@@ -1,0 +1,10 @@
+---
+title: "Policy Applications and Recommendations"
+format: bookup-html
+---
+
+# Translating Research to Policy
+
+This chapter demonstrates how spatial analysis informs evidence-based policy...
+
+[Your policy content]

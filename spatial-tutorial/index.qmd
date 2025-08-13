@@ -1,0 +1,40 @@
+---
+title: "Spatial Capabilities and Community Corrections"
+format: bookup-html
+---
+
+# Welcome to the Tutorial
+
+This interactive tutorial demonstrates how to integrate **spatial capabilities theory** with **Integrated Nested Laplace Approximation (INLA)** methodology.
+
+## Tutorial Sections
+
+::: {.grid}
+
+::: {.g-col-6}
+### 📊 Methodology
+Complete workflow from data preparation through spatial modeling:
+
+- **[Data Preparation](data-preparation.qmd)** - Cleaning and integration
+- **[Variable Selection](variable-selection.qmd)** - Bayesian Model Averaging  
+- **[Spatial Modeling](spatial-modeling.qmd)** - INLA-BYM2 implementation
+- **[Model Validation](model-validation.qmd)** - Diagnostics and testing
+:::
+
+::: {.g-col-6}
+### 🎯 Applications
+Analysis results and policy translation:
+
+- **[Results](results.qmd)** - Key findings and spatial patterns
+- **[Policy Applications](policy.qmd)** - Evidence-based recommendations
+- **[About](about.qmd)** - Background and context
+:::
+
+:::
+
+## Getting Started
+
+::: {.callout-tip}
+## Ready to Begin?
+Start with [Data Preparation](data-preparation.qmd) to see the complete workflow, or jump to any section using the navigation menu.
+:::

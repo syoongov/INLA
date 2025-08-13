@@ -1,0 +1,15 @@
+{
+  "hash": "2b899ffd3048afaee01c72f34ecb2fb9",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Spatial Modeling with INLA-BYM2\"\nformat: bookup-html\n---\n\n# INLA-BYM2 Spatial Model Specification\n\n## Theoretical Foundation\n\n**What This Section Accomplishes:**\nThe INLA-BYM2 framework operationalizes spatial capabilities theory through hierarchical Bayesian structure that decomposes spatial variation into theoretically meaningful components.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(INLA)\nlibrary(sf)\nlibrary(spdep)\n\n# Your INLA setup code here\n```\n:::\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

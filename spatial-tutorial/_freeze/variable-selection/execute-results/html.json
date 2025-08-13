@@ -1,0 +1,15 @@
+{
+  "hash": "da819b3a164e3c92a4ca182c6587dac9",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Variable Selection: Bayesian Model Averaging\"\nformat: bookup-html\n---\n\n# Bayesian Model Averaging for Variable Selection\n\n## Theoretical Justification\n\n**What This Section Accomplishes:**\nBMA systematically evaluates which variables should be included in the final spatial model by considering all possible combinations and weighting them by statistical evidence. This handles model uncertainty inherent in complex social processes.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(BMA)\nlibrary(tidyverse)\nlibrary(plotly)\n\n# Your BMA setup code here\n```\n:::\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
