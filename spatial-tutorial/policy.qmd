@@ -2,9 +2,150 @@
 title: "Policy Applications and Recommendations"
 format: bookup-html
 ---
+```{r inla-setup}
+library(tidyverse)
+library(sf)
+library(tidycensus)
+library(tigris)
+library(spdep)
+library(INLA)
+library(BMA)
+library(leaflet)
+library(plotly)
+library(DT)
+library(kableExtra)
+library(corrplot)
+library(car)
+library(viridis)
+library(patchwork)
+
+# Set global options
+options(tigris_use_cache = TRUE)
+sf_use_s2(FALSE)
+
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center",
+  cache = TRUE
+)
+
+
+# Your INLA setup code here
+```
 
 # Translating Research to Policy
 
 This chapter demonstrates how spatial analysis informs evidence-based policy...
 
-[Your policy content]
+# Part VI: Policy Translation Framework
+
+## 6.1 Evidence-Based Policy Targeting
+
+### Priority Matrix for Intervention
+
+```{r policy-matrix}
+policy_interventions <- data.frame(
+  Priority = 1:8,
+  `Policy Area` = c("Environmental Justice", "Transportation Access", "Education Access", 
+                    "Community Engagement", "Health Insurance", "Housing Quality",
+                    "Employment Programs", "Economic Development"),
+  `Effect Size` = c("+494.7%", "-91.0%", "-88.4%", "-73.6%", "-73.3%", 
+                    "+59.9%", "-50.0%", "+49.9%"),
+  `Evidence Level` = c("Strong", "Strong", "Strong", "Strong", "Strong",
+                      "Moderate", "Moderate", "Suggestive"),
+  `Implementation Strategy` = c(
+    "Environmental monitoring and remediation in high-risk areas",
+    "Transit development and auto access programs", 
+    "Educational opportunity expansion in underserved areas",
+    "Community organizing and civic engagement initiatives",
+    "Healthcare access expansion and insurance enrollment",
+    "Housing rehabilitation and quality improvement programs",
+    "Job training and placement in high-need areas",
+    "Economic development targeting capability enhancement"
+  )
+)
+
+DT::datatable(policy_interventions,
+              caption = "Policy Priority Matrix: Evidence-Based Intervention Targeting",
+              options = list(pageLength = 8, dom = 't'),
+              class = 'stripe hover') %>%
+  formatStyle("Effect.Size", 
+              backgroundColor = styleInterval(c(0), c("#ffebee", "#e8f5e8")))
+```
+
+## 6.2 Geographic Targeting Strategy
+
+### Using Spatial Results for Resource Allocation
+
+::: {.panel-tabset}
+
+## High-Risk Areas (Negative u_i)
+
+**Characteristics**: Areas with worse-than-expected outcomes despite measured characteristics
+
+**Strategy**: **Intensive Investment and Capacity Building**
+- Expand treatment and rehabilitation options
+- Increase job training and employment programs  
+- Improve transportation infrastructure
+- Build community support systems
+- Address environmental hazards
+- Enhance service coordination
+
+## High-Capability Areas (Positive u_i) 
+
+**Characteristics**: Areas with better-than-expected outcomes
+
+**Strategy**: **Asset-Based Development and Replication**
+- Build on existing community strengths
+- Enhance coordination and expand successful programs
+- Share resources and expertise with other areas
+- Document and replicate effective practices
+- Support regional leadership development
+
+## Transition Areas (Low |u_i|)
+
+**Characteristics**: Outcomes well-explained by measured individual factors
+
+**Strategy**: **Individual-Focused Services**
+- Emphasize targeted individual support services
+- Address specific personal and family barriers
+- Provide direct service delivery
+- Focus on individual skill development and support
+
+:::
+
+## 6.3 Implementation Framework
+
+### Multi-Level Intervention Strategy
+
+```{mermaid}
+flowchart TD
+    A[INLA Spatial Analysis Results] --> B[Geographic Targeting]
+    A --> C[Factor Prioritization]
+    
+    B --> D[High-Risk Areas<br/>Intensive Investment]
+    B --> E[High-Capability Areas<br/>Asset Building]
+    B --> F[Individual-Focus Areas<br/>Direct Services]
+    
+    C --> G[Environmental Justice<br/>Air Quality Improvement]
+    C --> H[Transportation Access<br/>Mobility Enhancement]  
+    C --> I[Community Engagement<br/>Collective Efficacy]
+    
+    D --> J[Policy Implementation]
+    E --> J
+    F --> J
+    G --> J
+    H --> J
+    I --> J
+    
+    J --> K[Monitoring & Evaluation]
+    K --> L[Adaptive Management]
+    L --> A
+    
+    style A fill:#e1f5fe
+    style J fill:#f3e5f5
+    style K fill:#e8f5e8
+```
+

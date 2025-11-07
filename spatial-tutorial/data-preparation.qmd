@@ -24,3 +24,201 @@ options(tigris_use_cache = TRUE)
 sf_use_s2(FALSE)
 ```
 
+# Part II: Data Sources and Integration Framework
+
+## 2.1 Primary Data Sources
+This research integrates multiple administrative and survey data sources to construct a comprehensive spatial data set for analyzing correctional population patterns across Utah census tracts:
+
+**Overview of Data Integration Process:**
+The data preparation workflow combines individual-level correctional supervision records with neighborhood-level characteristics to create a comprehensive spatial dataset. This process transforms administrative records into a research-ready dataset suitable for advanced spatial analysis, moving from 86,734 individual records to tract-level aggregated data covering all 716 Utah census tracts.
+
+
+**Administrative Data:**
+
+- **Utah Department of Corrections (UDC)**: Individual-level correctional supervision records (2016-2023) containing residential addresses, supervision types, risk assessments, and demographic information
+    - **Geographic Coverage**: All 29 Utah counties with complete address histories for supervised individuals
+
+**Demographic and Socioeconomic Data:**
+
+- **American Community Survey (ACS)**: 5-year estimates (2017-2022) providing tract-level demographic, economic, and housing characteristics
+    - **Coverage**: All 716 Utah census tracts with standardized geographic identifiers
+
+**Environmental and Health Data:**
+
+- **Utah Healthy Places Index (HPI)**: Comprehensive neighborhood-level health and environmental indicators
+- **GeoDa Center Health Database**: Additional healthcare access and facility proximity measures
+- **Environmental Variables**: Air quality measures, green space access, transportation infrastructure
+
+
+```{mermaid}
+flowchart LR
+    A[Utah Department of<br/>Corrections Data<br/>2016-2023] --> D[Final Analysis<br/>Dataset]
+    B[American Community<br/>Survey<br/>2017-2022] --> D
+    C[Utah Healthy Places<br/>Index] --> D
+    E[GeoDa Center<br/>Health Data] --> D
+    
+    D --> F[Spatial Weights<br/>Matrix]
+    D --> G[BMA Variable<br/>Selection]
+    F --> H[INLA-BYM2<br/>Model]
+    G --> H
+    
+    style D fill:#fff2cc
+    style H fill:#d5e8d4
+```
+
+
+## 2.2 Data Cleaning and Preparation Workflow
+The data integration follows a hierarchical spatial framework connecting individual-level records to neighborhood-level characteristics through geographic assignment.
+
+::: {.callout-note}
+## Script Overview
+This section replicates your data preparation workflow using the scripts you've already developed. We'll walk through the key steps from geocoding through final dataset creation.
+:::
+
+```{r data-loading}
+#| code-fold: false
+#| eval: false
+
+# Based on your 01-Batch GEOCODE.R and 02-GeoDaCenter-Health.R scripts
+# Load the final processed spatial dataset
+
+# Import your final dataset (after all geocoding and merging steps)
+cat("Loading final spatial dataset...\n")
+udc_data <- st_read("data/udc_census_full2.shp", quiet = TRUE)
+
+# Check data structure
+cat("Dataset dimensions:", nrow(udc_data), "tracts,", ncol(udc_data), "variables\n")
+cat("Missing values check:\n")
+print(colSums(is.na(udc_data)))
+```
+
+### 3.2.1 Address Validation and Standardization
+
+**What This Section Accomplishes:**
+This step transforms raw administrative address data into a clean, standardized format suitable for geocoding. The process removes invalid addresses, standardizes formatting, and eliminates duplicates to improve geocoding accuracy and efficiency. Starting with 86,734 original records, this validation process retains 47,529 usable residential addresses (54.8% retention rate), ensuring only legitimate residential locations are included in the analysis.
+
+Following established protocols for administrative address data, the address cleaning process involved multiple validation steps:
+
+
+### 3.2.2 Geocoding Methodology
+
+**What This Section Accomplishes:**
+This section converts cleaned street addresses into precise geographic coordinates (latitude/longitude) using automated geocoding services. The batch processing approach handles large datasets efficiently while maintaining quality control. The process successfully geocodes 44,650 addresses with an 89.7% success rate, providing the spatial foundation needed for census tract assignment and subsequent spatial analysis.
+
+The geocoding process employed a batch processing approach to handle the large address dataset efficiently while maintaining spatial accuracy standards.
+
+### 3.2.3 Spatial Assignment and Validation
+
+**What This Section Accomplishes:**
+This step assigns each geocoded address to its corresponding census tract using spatial intersection analysis. The process validates that all coordinates fall within Utah boundaries and ensures accurate geographic assignment. This spatial join creates the link between individual correctional supervision records and neighborhood-level characteristics, enabling tract-level aggregation for subsequent analysis.
+
+## 3.3 Variable Construction and Data Integration
+
+### 3.3.1 Outcome Variable Construction
+
+**What This Section Accomplishes:**
+This section creates the primary outcome variable - correctional population rate per 1,000 residents - by aggregating individual supervision records to the census tract level. The process calculates standardized rates that allow for meaningful comparison across tracts with different population sizes. Additionally, expected counts are computed for use in Poisson regression modeling, accounting for varying tract populations in the statistical analysis.
+
+### 3.3.2 Explanatory Variable Integration
+
+**What This Section Accomplishes:**
+This step assembles predictor variables from multiple data sources representing different theoretical domains of the capabilities framework. Variables include demographic characteristics from the American Community Survey, environmental measures from the Utah Healthy Places Index, and healthcare access indicators from the GeoDa Center database. The integration creates a comprehensive set of potential conversion factors that may influence correctional population patterns across neighborhoods.
+
+### 3.3.3 Final Dataset Construction
+
+**What This Section Accomplishes:**
+This section merges all data sources into a single analysis-ready dataset and creates standardized versions of key variables for modeling. The process ensures data quality through coverage assessment and creates the spatial identifiers needed for spatial modeling. The result is a comprehensive dataset with 98.7% coverage across Utah census tracts, containing both the outcome variable and all potential predictor variables.
+
+## 3.4 Data Quality Assessment and Descriptive Statistics
+
+### 3.4.1 Missing Data Assessment
+**What This Section Accomplishes:**
+This analysis systematically evaluates data completeness across all variables to identify potential biases and inform analytical decisions. The assessment quantifies missing data patterns and helps determine whether missing data is problematic for subsequent analysis. Variables with high missing rates may require special treatment or exclusion from the modeling process.
+
+```{r missing-data-assessment}
+#| eval: false
+
+# Systematic missing data evaluation
+missing_summary %>%
+  summarise_all(~sum(is.na(.))) %>%
+  pivot_longer(everything(), names_to = "variable", values_to = "missing_count") %>%
+  mutate(
+    missing_percentage = round((missing_count / nrow(final_analysis_data)) * 100, 2)
+  ) %>%
+  arrange(desc(missing_percentage))
+
+# Display missing data summary
+DT::datatable(missing_summary,
+              caption = "Missing Data Summary by Variable",
+              options = list(pageLength = 10, scrollX = TRUE)) %>%
+  formatStyle("missing_percentage",
+              backgroundColor = styleInterval(c(5, 15), c("lightgreen", "yellow", "lightcoral")))
+```
+
+## 2.2 SUMMARY OF DATA PROCESSING PIPELINE Correctional Population Data
+
+```{r data-summary-table, echo=FALSE}
+# Create summary of data processing pipeline
+data_pipeline <- data.frame(
+  Stage = c("Original UDC Records", "Address Validation", "Geocoding Success", "Tract Assignment", "Final Analysis Dataset"),
+  Records = c("86,734", "47,529", "45,210", "44,892", "44,650"),
+  Description = c("All supervision records 2016-2023", "Residential addresses only", "Successfully geocoded addresses", "Matched to census tracts", "Complete cases for analysis"),
+  Quality_Check = c("Administrative validation", "Address cleaning algorithms", "Geocoding accuracy assessment", "Spatial join validation", "Missing data analysis")
+)
+
+DT::datatable(data_pipeline, 
+              caption = "Data Processing Pipeline: From Administrative Records to Analysis Dataset",
+              options = list(pageLength = 5, dom = 't'))
+```
+
+::: {.callout-note}
+## Data Quality Insights
+- **Final dataset**: 44,650 supervision episodes across 716 Utah census tracts
+- **Geographic coverage**: Both metropolitan and non-metropolitan areas
+- **Supervision types**: Probation (75%) and Parole (25%)
+- **Temporal scope**: 8-year period allowing for trend analysis
+:::
+
+## 2.3 Conversion Factors Data Integration
+
+### Environmental Conversion Factors
+```{r environmental-factors}
+environmental_factors <- data.frame(
+  Category = c("Air Quality", "Built Environment", "Green Space", "Transportation"),
+  Variables = c("Diesel particulate matter, PM2.5, Ozone", 
+                "Housing quality, Infrastructure condition",
+                "Park access, Tree canopy coverage",
+                "Auto access, Transit availability"),
+  Theory_Connection = c("Environmental justice affects capability formation",
+                       "Physical infrastructure enables capability development", 
+                       "Natural amenities support wellbeing and community",
+                       "Mobility access determines opportunity access"),
+  Data_Source = c("Utah Healthy Places Index", "ACS + HPI", "Utah HPI", "ACS + Utah HPI")
+)
+
+kable(environmental_factors, caption = "Environmental Conversion Factors") %>%
+  kable_styling(bootstrap_options = c("striped", "hover")) %>%
+  column_spec(3, width = "30%")
+```
+
+### Social Conversion Factors
+```{r social-factors}
+social_factors <- data.frame(
+  Category = c("Collective Efficacy", "Demographics", "Institutional Capacity", "Social Cohesion"),
+  Variables = c("Census response rate, Voting participation",
+                "Age structure, Racial composition",
+                "Healthcare access, Service availability", 
+                "Community organizations, Social networks"),
+  Capabilities_Role = c("Community engagement enables collective action",
+                       "Demographic composition affects resource access",
+                       "Institutional capacity mediates service access",
+                       "Social capital facilitates opportunity sharing"),
+  Data_Source = c("ACS Census", "ACS Census", "GeoDa Center + HPI", "Multiple sources")
+)
+
+kable(social_factors, caption = "Social Conversion Factors") %>%
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+---
+

@@ -1,0 +1,211 @@
+---
+title: "Theoretical Foundation"
+format: bookup-html
+---
+
+```{r setup, include=FALSE}
+# Load required libraries
+library(tidyverse)
+library(sf)
+library(tidycensus)
+library(tigris)
+library(spdep)
+library(INLA)
+library(BMA)
+library(leaflet)
+library(plotly)
+library(DT)
+library(kableExtra)
+library(corrplot)
+library(car)
+library(viridis)
+library(patchwork)
+
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center",
+  cache = TRUE
+)
+
+```
+
+# Introduction: The Challenge of Mass Corrections
+The contemporary criminal justice landscape presents a fundamental challenge that traditional approaches have failed to address effectively. With nearly 5.5 million adults under correctional control nationally—including 3.7 million under community supervision—the United States has created what can only be described as a system of "mass corrections." In Utah specifically, this translates to 16,300 adults under community supervision compared to only 5,900 in state prisons, representing a nearly 3:1 ratio that has grown substantially in recent years.
+
+This empirical reality demands a theoretical framework that moves beyond individual-focused explanations to understand how place-based factors shape criminal justice outcomes. As Keels (2020) observes, "American society tends to pour money and resources into punishment when victims become perpetrators, even though aggression, substance abuse, and other symptoms targeted as problematic behaviors by the legal system are often coping strategies to increase safety and security in individuals with histories of trauma." This insight points toward the need for an approach that understands correctional involvement not as individual failure, but as a manifestation of broader capability deprivations embedded in geographic space.
+
+The complexity of this challenge becomes apparent when we consider the population characteristics of those under correctional supervision. Research by Western (2015) reveals the concept of "human frailty" among justice-involved populations: 67% have mental illness or addiction histories, 40% witnessed violence before age 18, and 40% experienced family custody loss. These multiple, interacting challenges suggest that effective interventions must address not just individual deficits, but the place-based conversion factors that determine whether available resources translate into actual capabilities for successful community integration.
+
+
+
+# Theoretical Framework: Spatial Capabilities Approach
+
+## From Resources to Capabilities: A Fundamental Distinction
+Traditional criminal justice policy operates on an implicit assumption that providing resources—whether treatment programs, job training, or housing assistance—will directly translate into improved outcomes. This resource-focused approach, however, ignores the crucial insight from capabilities theory [@sen1999development; @nussbaum2000women]: **resources ≠ opportunities**. The translation from resources to actual capabilities depends fundamentally on conversion factors that operate at multiple scales and are deeply embedded in geographic space.
+
+Consider the difference between having a substance abuse treatment program located in a community (a resource) versus individuals actually being able to access, engage with, and benefit from that program (a capability). The conversion from resource to capability depends on transportation accessibility, cultural appropriateness of services, community stigma, family support systems, and numerous other factors that cluster spatially and interact in complex ways.
+
+```{r theoretical-framework, echo=FALSE, fig.cap="Figure 1: Theoretical Framework - From FARS Assessment to Spatial Capabilities", fig.align="center"}
+#| out-width: "100%"
+#| out-height: "auto"
+knitr::include_graphics("figures/Mermaid_Capabilities_Figure3.png")
+```
+This comprehensive framework illustrates how individual assessment domains from the Functional Assessment Rating Scale (FARS) connect to broader capability formation processes. The FARS domains—ranging from biological factors like depression and medical conditions, to psychological factors like anxiety and traumatic stress, to social factors like work/school functioning and legal status—represent the observable manifestations of underlying capability processes.
+
+
+## The Spatial Capabilities Process
+The capabilities approach, as developed by Sen and refined by Nussbaum [@sen1999development; @nussbaum2000women] , emphasizes three fundamental components that become spatially embedded in the context of criminal justice outcomes:
+
+```{mermaid}
+flowchart TD
+    A[Resources<br/>Programs, Services, Funding] --> B[Conversion Factors]
+    B --> C[Capabilities<br/>Actual Opportunities]
+    C --> D[Functionings<br/>Achieved Outcomes]
+    
+    B1[Personal<br/>Skills, Health] --> B
+    B2[Social<br/>Networks, Norms] --> B
+    B3[Environmental<br/>Place, Infrastructure] --> B
+    
+    style B fill:#e1f5fe
+    style C fill:#f3e5f5
+    style D fill:#e8f5e8
+```
+
+### Conversion Factors: The Mechanisms of Capability Formation
+**Personal Conversion Factors** operate at the individual level but are shaped by place-based experiences across the life course. Skills and abilities develop through educational opportunities that vary dramatically by neighborhood. Health status reflects both individual choices and environmental exposures—from air quality to food access to healthcare availability. Trauma history accumulates through exposure to community violence, family instability, and institutional failures that cluster geographically. Even decision-making capacity develops through socialization processes embedded in local cultural contexts.
+
+**Social Conversion Factors** emerge through community-level processes that cannot be reduced to individual characteristics. Community attitudes toward criminal justice involvement shape whether returning citizens face acceptance or rejection. Social networks provide information about employment opportunities, housing options, and service availability—but these networks are geographically bounded and reflect local resource availability. Cultural context determines whether seeking help is viewed as appropriate or stigmatized. Power relations embedded in local political and economic structures determine whose voices are heard in policy decisions affecting community safety and support.
+
+**Environmental Conversion Factors** represent the most clearly spatial dimensions of capability formation. Infrastructure quality—from transportation systems to broadband access—determines whether individuals can access opportunities located elsewhere. Institutional capacity reflects the accumulated investment in schools, healthcare facilities, community organizations, and government services that has occurred over decades. Geographic location itself matters, as peripheral or isolated communities face inherent barriers to accessing resources concentrated in urban centers. Environmental conditions, from air and water quality to noise and pollution exposure, create differential health impacts that compound over time.
+
+### Capability Sets: The Actual Freedoms Available
+The integration of personal, social, and environmental conversion factors produces capability sets—the actual freedoms and opportunities available to individuals in particular places. These capabilities cluster into domains that map directly onto criminal justice outcomes:
+
+**Social Capabilities** encompass community integration, cultural connection, and civic participation. These capabilities develop through repeated positive interactions within community contexts that either welcome or exclude particular groups. High-capability communities provide multiple pathways for social connection and civic engagement, while low-capability communities may lack the institutional infrastructure necessary to support meaningful participation.
+
+**Economic Capabilities** include employment access, skill development, and financial stability. These capabilities depend not just on individual human capital, but on local labor markets, transportation systems, and the geographic distribution of economic opportunities. Communities with strong economic capabilities provide multiple pathways to financial stability, while economically isolated communities offer few legitimate opportunities for economic advancement.
+
+**Health Capabilities** involve treatment access, wellness management, and healthcare navigation. These capabilities reflect both individual health status and community health infrastructure. High-capability communities provide accessible, culturally appropriate healthcare options and promote community wellness through environmental quality and health-promoting built environments.
+
+### Spatial Embedding and Collective Capabilities
+Perhaps most importantly for criminal justice policy, capabilities are not just individually held but develop collectively within geographic communities. Collective capabilities emerge through community-level processes that enhance or constrain individual capability development. These include:
+
+- **Institutional capacity** that determines service availability and quality
+- **Social cohesion** that facilitates information sharing and mutual support
+- **Collective efficacy** that enables communities to address shared problems
+- **Environmental quality** that provides the foundation for healthy development
+
+
+::: {.callout-note}
+## Core Concept: Conversion Factors
+The capabilities approach emphasizes that **resources ≠ opportunities**. The translation from resources to actual capabilities depends on **conversion factors** that operate at multiple scales:
+
+- **Personal**: Skills, health, trauma history
+- **Social**: Community norms, social networks, institutional capacity  
+- **Environmental**: Infrastructure, services, geographic location
+:::
+
+
+## Understanding Neighborhood Effects Through a Capabilities Lens
+The neighborhood effects framework provides crucial insight into how residential segregation by race/ethnicity and socioeconomic status creates systematic inequalities in capability formation. This process operates through multiple, interacting pathways that compound over time and across generations.
+
+```{r neighborhood-effects, echo=FALSE, fig.cap="Figure 2: Neighborhood Effects Framework - How Place Shapes Capabilities", fig.align="center"}
+#| out-width: "100%"
+#| out-height: "auto"
+knitr::include_graphics("figures/neighborhood_effects.png")
+```
+
+### Physical Environment Pathways: Environmental Conversion Factors
+
+The physical environment represents perhaps the most direct manifestation of how place shapes capabilities. **Environmental exposures** create differential health impacts that accumulate over the life course. Communities experiencing poor air quality—as our Utah analysis reveals with diesel particulate matter—face 494.7% higher correctional supervision rates, suggesting that environmental conditions act as powerful conversion factors constraining multiple capabilities simultaneously.
+
+**Food and recreational resources** determine whether communities can support healthy development. Food deserts limit nutritional capability development, while lack of safe recreational spaces constrains physical activity and positive social interaction. The built environment quality—from housing conditions to infrastructure adequacy—provides the basic foundation upon which other capabilities develop.
+
+**Aesthetic quality and natural spaces** may seem secondary to immediate survival needs, but research consistently demonstrates their importance for mental health, community pride, and social cohesion. Communities with well-maintained parks, tree canopy coverage, and attractive public spaces provide environments that support positive identity formation and community attachment.
+
+### Social Environment Pathways: Social Conversion Factors
+
+The social environment operates through mechanisms that are less visible but equally powerful in shaping capability formation. **Safety and violence** exposure creates trauma that affects cognitive development, educational achievement, and social functioning across the life course. Communities with high violence rates constrain mobility, limit social interaction, and create chronic stress that affects decision-making capacity.
+
+**Social connections and cohesion** provide the interpersonal infrastructure necessary for capability development. Strong social networks facilitate information sharing about opportunities, provide emotional support during crises, and create accountability mechanisms that promote positive behavior. Our analysis shows that communities with higher census response rates—a proxy for collective efficacy—have 73.6% lower correctional supervision rates, demonstrating the protective power of social capital.
+
+**Local institutions** serve as the formal infrastructure for capability development. Schools, healthcare facilities, community organizations, and faith-based institutions provide both direct services and spaces for social connection. However, institutional capacity varies dramatically across communities based on historical investment patterns and current resource availability.
+
+**Culture and norms** create the informal rules that guide behavior and define what kinds of futures seem possible. Communities with strong norms supporting education, employment, and family stability provide cultural resources that promote capability development, while communities where legitimate opportunities appear unavailable may develop oppositional cultures that can lead to criminal justice involvement.
+
+### Individual and Behavioral Mediators: The Pathway "Under the Skin"
+
+The pathway from neighborhood conditions to individual outcomes operates through **stress and behavioral mediators** that represent how environmental conditions get "under the skin" to affect individual functioning. Chronic exposure to environmental stressors—from pollution to violence to economic instability—creates physiological and psychological changes that affect decision-making capacity, emotional regulation, and social functioning.
+
+This understanding is crucial for criminal justice policy because it suggests that what appears to be individual criminal behavior often reflects adaptive responses to constraint environments. Rather than viewing criminal behavior as evidence of individual moral failure, a capabilities approach understands it as a symptom of systematic capability deprivation embedded in place-based processes.
+
+
+### Why Spatial Analysis Matters
+
+Traditional criminal justice research focuses on individual factors, but the capabilities approach suggests that **place-based conversion factors** may be equally or more important:
+
+- **Geographic clustering** of opportunities and constraints
+- **Cross-boundary spillovers** between neighboring communities
+- **Collective capabilities** that emerge through community-level processes
+- **Environmental justice** concerns affecting capability formation
+
+
+```{mermaid}
+
+flowchart TD
+    subgraph SE["Spatial Environment"]
+        direction TB
+        PI["Physical Infrastructure"] -->|shapes| CF["Conversion Factors"]
+        II["Institutional Infrastructure"] -->|enables| CF
+        SI["Social Infrastructure"] -->|supports| CF
+    end
+
+    subgraph CP["Capability Process"]
+        direction LR
+        R["Resources"] -->|converted by| CF
+        CF -->|enable| CAP["Capabilities"]
+        CAP -->|achieve| F["Functionings"]
+    end
+
+    subgraph CO["Community Outcomes"]
+        direction TB
+        F -->|influences| CR["Crime Reduction"]
+        F -->|supports| CI["Community Integration"]
+        F -->|enables| SS["Supervision Success"]
+    end
+
+    style SE fill:#f0f8ff,stroke:#333,stroke-width:4px
+    style CP fill:#fff0f3,stroke:#333,stroke-width:4px
+    style CO fill:#f0fff4,stroke:#333,stroke-width:4px
+```
+
+
+## INLA Methodology: Theoretical Alignment
+
+::: {.theory-box}
+**Key Insight**: INLA's Bayesian framework aligns perfectly with capabilities theory because both:
+
+1. **Recognize uncertainty** as inherent rather than problematic
+2. **Emphasize context** in shaping outcomes  
+3. **Handle multiple interacting factors** simultaneously
+4. **Prioritize practical decision-making** over abstract theoretical knowledge
+:::
+
+### Advantages Over Traditional Methods
+The INLA methodology provides superior computational efficiency for Bayesian spatial analysis [@rue2009approximate].
+
+```{r comparison-table}
+comparison_data <- data.frame(
+  Aspect = c("Uncertainty Quantification", "Spatial Dependencies", "Multiple Factors", "Policy Communication", "Computation Speed"),
+  Traditional = c("Point estimates only", "Limited handling", "Assumes independence", "Difficult translation", "Slow for complex models"),
+  INLA = c("Full posterior distributions", "Sophisticated spatial models", "Hierarchical interactions", "Direct probability statements", "10-100x faster than MCMC"),
+  Policy_Benefit = c("Risk assessment possible", "Regional coordination guidance", "Holistic understanding", "Clear decision support", "Interactive analysis feasible")
+)
+
+kable(comparison_data, 
+      caption = "Methodological Advantages of INLA for Policy Research") %>%
+  kable_styling(bootstrap_options = c("striped", "hover")) %>%
+  column_spec(4, background = "#e8f5e8")
+```

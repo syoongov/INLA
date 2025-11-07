@@ -1,26 +1,193 @@
 ---
-title: "Data Preparation and Integration"
+title: "Methodology: Spatial Capabilities and INLA"
 format: bookup-html
 ---
 
-# Data Sources and Integration Framework
+# Bridging Theory and Method for Criminal Justice Analysis
 
-## Overview
-This section transforms raw administrative data into a research-ready spatial dataset suitable for advanced Bayesian analysis.
+## Theoretical Framework: Spatial Capabilities Approach
+The core conceptual model of this theoretical framework is the capabilities approach which provides a powerful lens for understanding how place-based factors influence criminal justice outcomes. Our theoretical framework integrates the capabilities process with spatial analysis to understand how geographic context shapes the translation of resources into actual opportunities.
 
-```{r setup-data-prep, include=FALSE}
-# Load required libraries
-library(tidyverse)
-library(sf)
-library(tidycensus)
-library(tigris)
-library(spdep)
-library(DT)
-library(kableExtra)
-library(plotly)
 
-# Set options
-options(tigris_use_cache = TRUE)
-sf_use_s2(FALSE)
+```{mermaid}
+
+flowchart TD
+    subgraph SE["Spatial Environment"]
+        direction TB
+        PI["Physical Infrastructure"] -->|shapes| CF["Conversion Factors"]
+        II["Institutional Infrastructure"] -->|enables| CF
+        SI["Social Infrastructure"] -->|supports| CF
+    end
+
+    subgraph CP["Capability Process"]
+        direction LR
+        R["Resources"] -->|converted by| CF
+        CF -->|enable| CAP["Capabilities"]
+        CAP -->|achieve| F["Functionings"]
+    end
+
+    subgraph CO["Community Outcomes"]
+        direction TB
+        F -->|influences| CR["Crime Reduction"]
+        F -->|supports| CI["Community Integration"]
+        F -->|enables| SS["Supervision Success"]
+    end
+
+    style SE fill:#f0f8ff,stroke:#333,stroke-width:4px
+    style CP fill:#fff0f3,stroke:#333,stroke-width:4px
+    style CO fill:#f0fff4,stroke:#333,stroke-width:4px
 ```
+
+### Key Theoretical Components
+
+::: {.callout-note}
+## Three Fundamental Elements
+
+**1. Conversion Factors**: The mechanisms that translate resources into actual capabilities
+  
+  - **Personal**: Skills, health status, trauma history, decision-making capacity
+  - **Social**: Community norms, social networks, cultural context, power relations  
+  - **Environmental**: Infrastructure, institutions, geographic location, environmental conditions
+
+**2. Capability Sets**: The actual freedoms and opportunities available to individuals
+
+  - **Social Capabilities**: Community integration, cultural connection, civic participation
+  - **Economic Capabilities**: Employment access, skill development, financial stability
+  - **Health Capabilities**: Treatment access, wellness management, healthcare navigation
+
+**3. Spatial Embedding**: How capabilities develop and cluster geographically
+  
+  - **Collective capabilities** that emerge through community-level processes
+  - **Cross-boundary spillovers** between neighboring communities
+  - **Place-based constraints** and opportunities
+:::
+
+
+## Neighborhood Effects and Spatial Processes
+
+```{r neighborhood-effects, echo=FALSE, fig.cap="Figure 2: Neighborhood Effects Framework - How Place Shapes Capabilities", fig.align="center"}
+#| out-width: "100%"
+#| out-height: "auto"
+knitr::include_graphics("figures/neighborhood_effects.png")
+```
+
+The neighborhood effects framework illustrates how **residential segregation by race/ethnicity and socioeconomic status** creates differential access to capability-enhancing resources. This process operates through:
+
+### Physical Environment Pathways
+- **Environmental exposures** (air quality, pollution, hazards)
+- **Food and recreational resources** (access to healthy options, safe spaces)
+- **Built environment quality** (housing, infrastructure, transportation)
+- **Aesthetic quality and natural spaces** (parks, green space, community appearance)
+
+### Social Environment Pathways  
+- **Safety and violence** (community safety, exposure to trauma)
+- **Social connections and cohesion** (collective efficacy, social capital)
+- **Local institutions** (schools, healthcare, community organizations)
+- **Culture and norms** (community values, expectations, social control)
+
+### Individual and Behavioral Mediators
+The pathway from neighborhood conditions to outcomes operates through **stress and behavioral mediators**, highlighting how environmental conditions get "under the skin" to affect individual functioning and decision-making.
+
+---
+
+# Methodological Integration: INLA and Capabilities
+
+## Why INLA for Capabilities Analysis?
+
+The Integrated Nested Laplace Approximation (INLA) methodology aligns perfectly with spatial capabilities theory:
+
+::: {.panel-tabset}
+
+## Theoretical Alignment
+
+### Core Alignments
+
+**1. Multiple Conversion Factors**
+
+- INLA handles multiple covariates simultaneously
+- Accounts for interaction effects between factors
+- Models spatial dependencies and hierarchical relationships
+- Captures the complex interplay of personal, social, and environmental factors
+
+**2. Spatial Embedding of Capabilities**
+
+- Models neighborhood effects as collective capabilities
+- Accounts for spatial clustering of opportunities and constraints
+- Captures spillover impacts between communities
+- Reflects how capabilities develop collectively within geographic space
+
+**3. Uncertainty Recognition**
+
+- Provides full posterior distributions rather than point estimates
+- Offers credible intervals essential for policy risk assessment
+- Quantifies uncertainty in capability measurements
+- Supports evidence-based decision making under uncertainty
+
+## Model Specification
+
+### Mathematical Framework
+
+The INLA-BYM2 model operationalizes spatial capabilities theory:
+
+$$y_i \sim \text{Poisson}(\mu_i)$$
+
+$$\log(\mu_i) = \log(E_i) + \alpha + \sum_{j=1}^p \beta_j x_{ij} + u_i + v_i$$
+
+### Components Map to Capabilities Theory
+
+- **$y_i$**: Observed correctional population count in census tract $i$ (functioning outcome)
+- **$E_i$**: Expected count controlling for population size (standardization)
+- **$X_{ij}$**: Capability measures and conversion factors
+- **$u_i$**: Structured spatial random effect (**collective capabilities**)
+- **$v_i$**: Unstructured random effect (individual variation)
+- **$\beta_j$**: Fixed effects measuring individual conversion factor impacts
+
+### Spatial Random Effects Decomposition
+
+$$u_i = \frac{1}{\sqrt{\tau_u}}\left(\sqrt{\phi} \cdot z_i + \sqrt{1-\phi} \cdot \epsilon_i\right)$$
+
+Where:
+
+- **$\phi$**: Mixing parameter measuring importance of spatial clustering vs. individual factors
+- **$z_i$**: Spatially structured component (collective capabilities)
+- **$\epsilon_i$**: Unstructured component (individual variation)
+
+## Policy Translation
+
+### From Spatial Analysis to Intervention Design
+
+**Collective Capabilities ($u_i$)**:
+
+- Identify capability clusters across geographic space
+- Map resource distribution and service accessibility  
+- Locate gaps in community infrastructure
+- Target place-based interventions
+
+**Conversion Factors ($\phi$)**:
+
+- Assess how strongly place matters for outcomes
+- Evaluate barriers to capability development
+- Guide geographic targeting of resources
+- Plan coordination between neighboring areas
+
+**Individual Effects ($\beta_j$)**:
+
+- Measure direct impacts of specific conversion factors
+- Identify which capabilities matter most
+- Prioritize intervention components
+- Design individual-level support services
+
+:::
+
+
+---
+
+```{r theoretical-framework, echo=FALSE, fig.cap="Figure 1: Theoretical Framework - From FARS Assessment to Spatial Capabilities", fig.align="center"}
+#| out-width: "100%"
+#| out-height: "auto"
+knitr::include_graphics("figures/Mermaid_Capabilities_Figure3.png")
+```
+
+Recent advances in Bayesian spatial modeling [@rue2009approximate; @riebler2016intuitive; @simpson2017penalising] have made complex spatial analysis more accessible.
+
 

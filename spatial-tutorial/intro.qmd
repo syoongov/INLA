@@ -1,0 +1,92 @@
+---
+title: "Introduction"
+format: bookup-html
+---
+
+# Introduction and Overview
+## Problem Statement: The Geography of Mass Punishment
+The landscape of mass incarceration in the United States has undergone a profound transformation over the past three decades, fundamentally challenging conventional narratives about where and how criminal justice system involvement occurs. Contrary to popular frameworks that position mass incarceration as primarily an urban phenomenon concentrated in racially segregated inner-city neighborhoods, emerging evidence reveals a dramatic spatial redistribution of correctional system involvement toward non-metropolitan regions, including small cities, towns, and rural areas (Kang-Brown & Subramanian, 2017; Simes, 2021). This geographic transformation represents not merely a shift in the location of punishment, but a fundamental restructuring of how systems of social control operate across America's diverse landscape. 
+
+### The Spatial Transformation of American Punishment
+Recent research demonstrates that the majority of jail and prison admissions now originate from non-metropolitan regions, with the highest incarceration rates emerging across thousands of smaller cities, towns, and rural areas since the late 1990s (Simes, 2021). This pattern challenges the urban theory of crime that has dominated criminological thinking, which centers on concentrated disadvantage in racially segregated urban neighborhoods characterized by poverty, unemployment, violence, and social disorder. While these urban dynamics remain important, they represent only part of a much larger and more complex geography of punishment that extends into what Simes (2021) terms "America's forgotten places."
+
+The data reveal striking patterns of this spatial transformation. Rural counties experienced a 436 percent increase in pretrial detention rates between 1970 and 2013, growing from 49 per 100,000 people to 265 per 100,000 people (Kang-Brown et al., 2017). Simultaneously, while urban areas have benefited from criminal justice reforms and public investment in alternative services—mental health programs, diversion initiatives, and community-based interventions—rural regions have received fragmented public investment and have been largely neglected in policy dialogue. The result is an almost universal urban-to-rural shift in prison admissions across the 35 states with reliable county-level data, regardless of whether overall state admissions are declining.
+
+## Demographic Shifts and the New Face of Mass Punishment
+This geographic transformation has been accompanied by significant demographic changes that further challenge conventional understandings of who experiences criminal justice system involvement. Small counties, including rural areas, have been driving the incarceration of women, with the number of women in jail increasing by 43 percent in rural counties and 29 percent in small and medium metropolitan counties between 2004 and 2014, while declining by 6 percent in urban counties. Similarly, the incarceration of white people grew most dramatically in rural counties—19 percent in rural counties and 15 percent in small and medium metro counties—while declining 15 percent in urban counties.
+
+These demographic shifts reflect broader socioeconomic transformations affecting non-metropolitan areas, including the suburbanization of poverty, deindustrialization, disinvestment in social services, the opioid and methamphetamine epidemics, rising rates of "deaths of despair" (Case & Deaton, 2015), untreated mental illness, limited access to public goods, selective out-migration, social isolation, and rising unemployment and underemployment. This constellation of conditions has given rise to what scholars term the "rural ghetto"—areas abandoned by both private capital and public investment that share qualities with urban ghettos due to high levels of segregation and stigmatization.
+
+## From Mass Incarceration to Mass Corrections
+Equally significant is the transformation from a system focused primarily on incarceration to one increasingly reliant on community supervision. Currently, 5.5 million adults (1 in 61) are under some form of correctional control, with 3.7 million under community supervision through parole and probation—creating a nearly 2:1 ratio of community supervision to incarceration nationwide. This shift toward "mass corrections" represents a fundamental change in how punishment operates across space, moving beyond the bounded geography of prisons and jails to encompass the communities where individuals live, work, and attempt to rebuild their lives.
+This transformation has profound implications for understanding punishment as a spatial phenomenon. Unlike incarceration, which concentrates individuals in specific institutional locations, community supervision spreads across the landscape, embedding criminal justice system involvement within the fabric of communities. The effectiveness of community supervision thus depends not only on individual compliance but on the capacity of communities to provide the resources, opportunities, and support systems necessary for successful reintegration. This creates a complex geography of capability and constraint that varies dramatically across different types of places.
+
+# Utah as a Critical Case Study
+Utah represents a particularly compelling case for understanding these transformations due to its predominantly non-metropolitan geography, rapidly changing demographics, and challenging public health landscape. The state exemplifies many of the trends affecting non-metropolitan America while offering unique insights into how place-based factors shape criminal justice outcomes across diverse geographic contexts.
+
+Utah faces the second-fastest growing prison population in the country, driven largely by supervision revocations rather than new crimes. Since 2012, the probation population has increased by 17.8 percent and the parole population by 47.1 percent, with revocations growing by 42 percent for both populations between 2015 and 2018. These patterns suggest fundamental challenges in supporting successful community reintegration that extend beyond individual-level factors to encompass the broader conditions of the places where supervision occurs.
+
+The state's public health challenges further illuminate these place-based dynamics. Utah ranks worst nationally in mental health measures for adults, reflecting limited access to care and growing rates of mental illness that have been exacerbated post-COVID. Mental health concerns are particularly acute among youth, with suicide representing the leading cause of death for Utahns aged 10 to 24. These trends are most severe in rural areas, where medical provider shortages are especially problematic. The TriCounty area (Daggett, Duchesne, and Uintah counties) has the highest suicide rate in the state, followed by Central Utah and Southeast Utah. Rural areas also face the highest opioid overdose death rates, with Carbon, Emery, Duchesne, Juab, Weber, Salt Lake, and Tooele counties experiencing the highest levels.
+
+## Geographic Concentration and Capability Deprivation
+These patterns suggest that correctional supervision in Utah, as elsewhere, is not randomly distributed across space but concentrates in areas characterized by multiple forms of capability deprivation. This geographic concentration reflects not simply the aggregation of individual disadvantages but the creation of spatial contexts where the conversion factors necessary to translate resources into actual capabilities operate less effectively. Understanding these patterns requires moving beyond individual-focused explanations to examine how place-based factors shape the capacity for human development and successful community integration.
+
+The spatial concentration of correctional populations reveals fundamental questions about how systems of punishment interact with patterns of social provisioning, institutional capacity, and community capability. Traditional approaches to criminal justice focus primarily on individual-level interventions—counseling, job training, substance abuse treatment—without adequate attention to the spatial contexts within which these interventions occur. This oversight represents not merely a technical limitation but a fundamental misunderstanding of how human capabilities develop through the complex interaction of individual characteristics, social relationships, and environmental conditions across different places.
+
+# Research Questions
+This dissertation addresses three interconnected research questions that bridge theoretical understanding with empirical analysis and policy application, examining how the spatial distribution of community punishment reflects broader patterns of capability deprivation across Utah's diverse geography:
+
+::: {.callout-note}
+## Research Questions:
+- **#1. How do capability deprivations manifest spatially across Utah communities, and what does this reveal about the geographic distribution of resources, opportunities, and conversion factors necessary for human development? **
+
+- **#2. What is the spatial relationship between community corrections populations and capability deprivations, and how do place-based factors serve as conversion factors that influence correctional supervision outcomes?**
+
+- **#3. How can Integrated Nested Laplace Approximation (INLA) methods inform the development of evidence-based, place-based policy interventions that address capability deprivations and improve community corrections outcomes?** 
+
+:::
+ 
+## RQ 1: 
+**How do capability deprivations manifest spatially across Utah communities, and what does this reveal about the geographic distribution of resources, opportunities, and conversion factors necessary for human development?**
+
+This question examines the fundamental premise that capabilities—the actual freedoms and opportunities individuals have to achieve the lives they value—are not randomly distributed across space but concentrate in patterns that reflect broader systems of social provisioning and institutional capacity. Drawing on Robeyns' capabilities framework from feminist economics, we conceptualize these spatial patterns as evidence of systematic inequalities in the conversion factors that enable individuals and communities to translate available resources into actual capabilities for human flourishing.
+
+The analysis will map the geographic distribution of capability deprivations across Utah's diverse landscape, from urban cores to rural counties, examining how access to healthcare, educational opportunities, economic development, environmental quality, transportation infrastructure, and social services varies across space. This spatial analysis of capabilities goes beyond simple resource availability to examine how place-based factors influence the effectiveness with which resources can be converted into actual freedoms and opportunities.
+
+
+## RQ 2: 
+**What is the spatial relationship between community corrections populations and capability deprivations, and how do place-based factors serve as conversion factors that influence correctional supervision outcomes?**
+
+This question shifts focus from patterns to relationships, examining how the geographic distribution of correctional supervision correlates with and is potentially influenced by spatial patterns of capability deprivation. The analysis moves beyond individual-level explanations for criminal justice system involvement to examine how community-level factors—what the capabilities approach terms "social conversion factors"—shape the likelihood of supervision and the success of community reintegration efforts.
+
+The investigation will examine multiple categories of place-based conversion factors:
+
+- **Environmental Factors:** Air quality, environmental hazards, green space access, and built environment conditions that affect health, wellbeing, and community capacity
+- **Social Provisioning Factors:** Healthcare access, educational opportunities, social services availability, and institutional capacity that support human development
+- **Economic Factors:** Employment opportunities, transportation access, business development, and economic infrastructure that enable economic capability formation
+- **Social Cohesion Factors:** Community engagement, collective efficacy, social networks, and civic participation that support collective capability development
+
+
+## RQ 3: 
+**How can Integrated Nested Laplace Approximation (INLA) methods inform the development of evidence-based, place-based policy interventions that address capability deprivations and improve community corrections outcomes?**
+
+This question addresses the critical challenge of translating spatial analysis into actionable policy guidance. Traditional policy approaches in criminal justice rely heavily on individual-level interventions without adequate tools for understanding how place-based factors influence intervention effectiveness or how to design coordinated place-based responses to complex social challenges.
+
+The analysis will demonstrate how INLA's Bayesian framework can provide the analytical foundation for evidence-based place-based policy development through:
+
+- **Geographic Targeting:** Using spatial risk assessment and uncertainty quantification to identify priority areas for intervention
+- **Resource Allocation:** Employing posterior probability distributions to optimize resource distribution under conditions of uncertainty and competing priorities
+- **Intervention Coordination:** Analyzing spatial spillover effects to design interventions that account for cross-boundary dynamics and regional interconnections
+- **Policy Evaluation:** Establishing frameworks for monitoring intervention impacts and supporting adaptive management of place-based initiatives
+
+# Dissertation Structure and Chapter Overview
+This dissertation is organized as three interconnected papers that build from theoretical development through empirical analysis to policy application. Each chapter builds on each other to demonstrate how place-based capability deprivations shape criminal justice outcomes and how spatial analysis can inform evidence-based place-based interventions.
+
+- **Chapter 1:** This current chapter presenting an overview.
+- **Chapter 2:** Theoretical Foundation Chapter: *"Spatial Capabilities Theory: Integrating Place and Human Development in Criminal Justice"*  ↗️ Summarized under: **[Theory](theory.qmd)** 📖
+- **Chapter 3:** Empirical Analysis Chapter: *"Neighborhoods and Correctional Outcomes: A Bayesian Spatial Analysis of Capability Deprivations"*  ↗️ Summarized under: Methodology pages & **[Results](results.qmd)** 📊
+- **Chapter 4:** Policy Application Chapter: *"From Spatial Analysis to Policy Action: Evidence-Based Place-Based Interventions in Community Corrections"*  ↗️ Summarized under: **[Policy Applications](policy.qmd)** 🗺️
+- **Chapter 5:** Conclusion and Future Research: *"Spatial Capabilities, Evidence-Based Policy, and the Future of Place-Based Criminal Justice Reform*  ↗️ Summarized under: [Conclusion](conclusion.qmd) ✅
+
+
+

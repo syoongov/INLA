@@ -98,6 +98,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script><style>html{ scroll-behavior: smooth; }</style>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script><script src="site_libs/quarto-diagram/mermaid-init.js"></script><link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="site_libs/datatables-binding-0.33/datatables.js"></script><script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script><link href="site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script><script src="site_libs/kePrint-0.0.1/kePrint.js"></script><link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 </head>
 <body class="nav-fixed quarto-light">
 
@@ -119,13 +126,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-about" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">About</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-about">
+<li>
+    <a class="dropdown-item" href="./abstract.html">
+ <span class="dropdown-text">Abstract</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./intro.html">
+ <span class="dropdown-text">Introduction</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./theory.html">
+ <span class="dropdown-text">Theoretical Foundation</span></a>
+  </li>  
+    </ul>
+</li>
+  <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-methodology" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Methodology</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-methodology">
 <li>
+    <a class="dropdown-item" href="./methodology.html">
+ <span class="dropdown-text">Theory to Method</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="./data-preparation.html">
  <span class="dropdown-text">Data Preparation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./descriptive.html">
+ <span class="dropdown-text">Descriptive Data</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./variable-selection.html">
@@ -142,7 +176,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
 </li>
   <li class="nav-item">
-    <a class="nav-link" href="./results.html"> 
+    <a class="nav-link" href="./results_2.html"> 
 <span class="menu-text">Results</span></a>
   </li>  
   <li class="nav-item">
@@ -150,8 +184,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Policy Applications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
-<span class="menu-text">About</span></a>
+    <a class="nav-link" href="./conclusion.html"> 
+<span class="menu-text">Conclusion</span></a>
   </li>  
 </ul>
 </div> <!-- /navcollapse -->
@@ -176,11 +210,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview"><span class="header-section-number">1.1</span> Overview</a></li>
   </ul>
 </li>
+  <li>
+<a href="#part-ii-data-sources-and-integration-framework" id="toc-part-ii-data-sources-and-integration-framework" class="nav-link" data-scroll-target="#part-ii-data-sources-and-integration-framework"><span class="header-section-number">2</span> Part II: Data Sources and Integration Framework</a>
+  <ul class="collapse">
+<li><a href="#primary-data-sources" id="toc-primary-data-sources" class="nav-link" data-scroll-target="#primary-data-sources"><span class="header-section-number">2.1</span> 2.1 Primary Data Sources</a></li>
+  <li>
+<a href="#data-cleaning-and-preparation-workflow" id="toc-data-cleaning-and-preparation-workflow" class="nav-link" data-scroll-target="#data-cleaning-and-preparation-workflow"><span class="header-section-number">2.2</span> 2.2 Data Cleaning and Preparation Workflow</a>
+  <ul class="collapse">
+<li><a href="#address-validation-and-standardization" id="toc-address-validation-and-standardization" class="nav-link" data-scroll-target="#address-validation-and-standardization"><span class="header-section-number">2.2.1</span> 3.2.1 Address Validation and Standardization</a></li>
+  <li><a href="#geocoding-methodology" id="toc-geocoding-methodology" class="nav-link" data-scroll-target="#geocoding-methodology"><span class="header-section-number">2.2.2</span> 3.2.2 Geocoding Methodology</a></li>
+  <li><a href="#spatial-assignment-and-validation" id="toc-spatial-assignment-and-validation" class="nav-link" data-scroll-target="#spatial-assignment-and-validation"><span class="header-section-number">2.2.3</span> 3.2.3 Spatial Assignment and Validation</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#variable-construction-and-data-integration" id="toc-variable-construction-and-data-integration" class="nav-link" data-scroll-target="#variable-construction-and-data-integration"><span class="header-section-number">2.3</span> 3.3 Variable Construction and Data Integration</a>
+  <ul class="collapse">
+<li><a href="#outcome-variable-construction" id="toc-outcome-variable-construction" class="nav-link" data-scroll-target="#outcome-variable-construction"><span class="header-section-number">2.3.1</span> 3.3.1 Outcome Variable Construction</a></li>
+  <li><a href="#explanatory-variable-integration" id="toc-explanatory-variable-integration" class="nav-link" data-scroll-target="#explanatory-variable-integration"><span class="header-section-number">2.3.2</span> 3.3.2 Explanatory Variable Integration</a></li>
+  <li><a href="#final-dataset-construction" id="toc-final-dataset-construction" class="nav-link" data-scroll-target="#final-dataset-construction"><span class="header-section-number">2.3.3</span> 3.3.3 Final Dataset Construction</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#data-quality-assessment-and-descriptive-statistics" id="toc-data-quality-assessment-and-descriptive-statistics" class="nav-link" data-scroll-target="#data-quality-assessment-and-descriptive-statistics"><span class="header-section-number">2.4</span> 3.4 Data Quality Assessment and Descriptive Statistics</a>
+  <ul class="collapse">
+<li><a href="#missing-data-assessment" id="toc-missing-data-assessment" class="nav-link" data-scroll-target="#missing-data-assessment"><span class="header-section-number">2.4.1</span> 3.4.1 Missing Data Assessment</a></li>
+  </ul>
+</li>
+  <li><a href="#summary-of-data-processing-pipeline-correctional-population-data" id="toc-summary-of-data-processing-pipeline-correctional-population-data" class="nav-link" data-scroll-target="#summary-of-data-processing-pipeline-correctional-population-data"><span class="header-section-number">2.5</span> 2.2 SUMMARY OF DATA PROCESSING PIPELINE Correctional Population Data</a></li>
+  <li>
+<a href="#conversion-factors-data-integration" id="toc-conversion-factors-data-integration" class="nav-link" data-scroll-target="#conversion-factors-data-integration"><span class="header-section-number">2.6</span> 2.3 Conversion Factors Data Integration</a>
+  <ul class="collapse">
+<li><a href="#environmental-conversion-factors" id="toc-environmental-conversion-factors" class="nav-link" data-scroll-target="#environmental-conversion-factors"><span class="header-section-number">2.6.1</span> Environmental Conversion Factors</a></li>
+  <li><a href="#social-conversion-factors" id="toc-social-conversion-factors" class="nav-link" data-scroll-target="#social-conversion-factors"><span class="header-section-number">2.6.2</span> Social Conversion Factors</a></li>
+  </ul>
+</li>
+  </ul>
+</li>
   </ul></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Data Preparation and Integration</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Data Preparation and Integration</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -199,11 +269,290 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="overview" class="level2" data-number="1.1"><h2 data-number="1.1" class="anchored" data-anchor-id="overview">
 <span class="header-section-number">1.1</span> Overview</h2>
 <p>This section transforms raw administrative data into a research-ready spatial dataset suitable for advanced Bayesian analysis.</p>
+</section></section><section id="part-ii-data-sources-and-integration-framework" class="level1" data-number="2"><h1 data-number="2">
+<span class="header-section-number">2</span> Part II: Data Sources and Integration Framework</h1>
+<section id="primary-data-sources" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="primary-data-sources">
+<span class="header-section-number">2.1</span> 2.1 Primary Data Sources</h2>
+<p>This research integrates multiple administrative and survey data sources to construct a comprehensive spatial data set for analyzing correctional population patterns across Utah census tracts:</p>
+<p><strong>Overview of Data Integration Process:</strong> The data preparation workflow combines individual-level correctional supervision records with neighborhood-level characteristics to create a comprehensive spatial dataset. This process transforms administrative records into a research-ready dataset suitable for advanced spatial analysis, moving from 86,734 individual records to tract-level aggregated data covering all 716 Utah census tracts.</p>
+<p><strong>Administrative Data:</strong></p>
+<ul>
+<li>
+<strong>Utah Department of Corrections (UDC)</strong>: Individual-level correctional supervision records (2016-2023) containing residential addresses, supervision types, risk assessments, and demographic information
+<ul>
+<li>
+<strong>Geographic Coverage</strong>: All 29 Utah counties with complete address histories for supervised individuals</li>
+</ul>
+</li>
+</ul>
+<p><strong>Demographic and Socioeconomic Data:</strong></p>
+<ul>
+<li>
+<strong>American Community Survey (ACS)</strong>: 5-year estimates (2017-2022) providing tract-level demographic, economic, and housing characteristics
+<ul>
+<li>
+<strong>Coverage</strong>: All 716 Utah census tracts with standardized geographic identifiers</li>
+</ul>
+</li>
+</ul>
+<p><strong>Environmental and Health Data:</strong></p>
+<ul>
+<li>
+<strong>Utah Healthy Places Index (HPI)</strong>: Comprehensive neighborhood-level health and environmental indicators</li>
+<li>
+<strong>GeoDa Center Health Database</strong>: Additional healthcare access and facility proximity measures</li>
+<li>
+<strong>Environmental Variables</strong>: Air quality measures, green space access, transportation infrastructure</li>
+</ul>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"></figure><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    A[Utah Department of&lt;br/&gt;Corrections Data&lt;br/&gt;2016-2023] --&gt; D[Final Analysis&lt;br/&gt;Dataset]
+    B[American Community&lt;br/&gt;Survey&lt;br/&gt;2017-2022] --&gt; D
+    C[Utah Healthy Places&lt;br/&gt;Index] --&gt; D
+    E[GeoDa Center&lt;br/&gt;Health Data] --&gt; D
+    
+    D --&gt; F[Spatial Weights&lt;br/&gt;Matrix]
+    D --&gt; G[BMA Variable&lt;br/&gt;Selection]
+    F --&gt; H[INLA-BYM2&lt;br/&gt;Model]
+    G --&gt; H
+    
+    style D fill:#fff2cc
+    style H fill:#d5e8d4
+</pre>
+</div>
+<p></p>
+</div>
+</div>
+</div>
+</section><section id="data-cleaning-and-preparation-workflow" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="data-cleaning-and-preparation-workflow">
+<span class="header-section-number">2.2</span> 2.2 Data Cleaning and Preparation Workflow</h2>
+<p>The data integration follows a hierarchical spatial framework connecting individual-level records to neighborhood-level characteristics through geographic assignment.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Script Overview
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This section replicates your data preparation workflow using the scripts you’ve already developed. We’ll walk through the key steps from geocoding through final dataset creation.</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Based on your 01-Batch GEOCODE.R and 02-GeoDaCenter-Health.R scripts</span></span>
+<span><span class="co"># Load the final processed spatial dataset</span></span>
+<span></span>
+<span><span class="co"># Import your final dataset (after all geocoding and merging steps)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Loading final spatial dataset...\n"</span><span class="op">)</span></span>
+<span><span class="va">udc_data</span> <span class="op">&lt;-</span> <span class="fu">st_read</span><span class="op">(</span><span class="st">"data/udc_census_full2.shp"</span>, quiet <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Check data structure</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Dataset dimensions:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">udc_data</span><span class="op">)</span>, <span class="st">"tracts,"</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">udc_data</span><span class="op">)</span>, <span class="st">"variables\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Missing values check:\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colSums</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">udc_data</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="address-validation-and-standardization" class="level3" data-number="2.2.1"><h3 data-number="2.2.1" class="anchored" data-anchor-id="address-validation-and-standardization">
+<span class="header-section-number">2.2.1</span> 3.2.1 Address Validation and Standardization</h3>
+<p><strong>What This Section Accomplishes:</strong> This step transforms raw administrative address data into a clean, standardized format suitable for geocoding. The process removes invalid addresses, standardizes formatting, and eliminates duplicates to improve geocoding accuracy and efficiency. Starting with 86,734 original records, this validation process retains 47,529 usable residential addresses (54.8% retention rate), ensuring only legitimate residential locations are included in the analysis.</p>
+<p>Following established protocols for administrative address data, the address cleaning process involved multiple validation steps:</p>
+</section><section id="geocoding-methodology" class="level3" data-number="2.2.2"><h3 data-number="2.2.2" class="anchored" data-anchor-id="geocoding-methodology">
+<span class="header-section-number">2.2.2</span> 3.2.2 Geocoding Methodology</h3>
+<p><strong>What This Section Accomplishes:</strong> This section converts cleaned street addresses into precise geographic coordinates (latitude/longitude) using automated geocoding services. The batch processing approach handles large datasets efficiently while maintaining quality control. The process successfully geocodes 44,650 addresses with an 89.7% success rate, providing the spatial foundation needed for census tract assignment and subsequent spatial analysis.</p>
+<p>The geocoding process employed a batch processing approach to handle the large address dataset efficiently while maintaining spatial accuracy standards.</p>
+</section><section id="spatial-assignment-and-validation" class="level3" data-number="2.2.3"><h3 data-number="2.2.3" class="anchored" data-anchor-id="spatial-assignment-and-validation">
+<span class="header-section-number">2.2.3</span> 3.2.3 Spatial Assignment and Validation</h3>
+<p><strong>What This Section Accomplishes:</strong> This step assigns each geocoded address to its corresponding census tract using spatial intersection analysis. The process validates that all coordinates fall within Utah boundaries and ensures accurate geographic assignment. This spatial join creates the link between individual correctional supervision records and neighborhood-level characteristics, enabling tract-level aggregation for subsequent analysis.</p>
+</section></section><section id="variable-construction-and-data-integration" class="level2" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="variable-construction-and-data-integration">
+<span class="header-section-number">2.3</span> 3.3 Variable Construction and Data Integration</h2>
+<section id="outcome-variable-construction" class="level3" data-number="2.3.1"><h3 data-number="2.3.1" class="anchored" data-anchor-id="outcome-variable-construction">
+<span class="header-section-number">2.3.1</span> 3.3.1 Outcome Variable Construction</h3>
+<p><strong>What This Section Accomplishes:</strong> This section creates the primary outcome variable - correctional population rate per 1,000 residents - by aggregating individual supervision records to the census tract level. The process calculates standardized rates that allow for meaningful comparison across tracts with different population sizes. Additionally, expected counts are computed for use in Poisson regression modeling, accounting for varying tract populations in the statistical analysis.</p>
+</section><section id="explanatory-variable-integration" class="level3" data-number="2.3.2"><h3 data-number="2.3.2" class="anchored" data-anchor-id="explanatory-variable-integration">
+<span class="header-section-number">2.3.2</span> 3.3.2 Explanatory Variable Integration</h3>
+<p><strong>What This Section Accomplishes:</strong> This step assembles predictor variables from multiple data sources representing different theoretical domains of the capabilities framework. Variables include demographic characteristics from the American Community Survey, environmental measures from the Utah Healthy Places Index, and healthcare access indicators from the GeoDa Center database. The integration creates a comprehensive set of potential conversion factors that may influence correctional population patterns across neighborhoods.</p>
+</section><section id="final-dataset-construction" class="level3" data-number="2.3.3"><h3 data-number="2.3.3" class="anchored" data-anchor-id="final-dataset-construction">
+<span class="header-section-number">2.3.3</span> 3.3.3 Final Dataset Construction</h3>
+<p><strong>What This Section Accomplishes:</strong> This section merges all data sources into a single analysis-ready dataset and creates standardized versions of key variables for modeling. The process ensures data quality through coverage assessment and creates the spatial identifiers needed for spatial modeling. The result is a comprehensive dataset with 98.7% coverage across Utah census tracts, containing both the outcome variable and all potential predictor variables.</p>
+</section></section><section id="data-quality-assessment-and-descriptive-statistics" class="level2" data-number="2.4"><h2 data-number="2.4" class="anchored" data-anchor-id="data-quality-assessment-and-descriptive-statistics">
+<span class="header-section-number">2.4</span> 3.4 Data Quality Assessment and Descriptive Statistics</h2>
+<section id="missing-data-assessment" class="level3" data-number="2.4.1"><h3 data-number="2.4.1" class="anchored" data-anchor-id="missing-data-assessment">
+<span class="header-section-number">2.4.1</span> 3.4.1 Missing Data Assessment</h3>
+<p><strong>What This Section Accomplishes:</strong> This analysis systematically evaluates data completeness across all variables to identify potential biases and inform analytical decisions. The assessment quantifies missing data patterns and helps determine whether missing data is problematic for subsequent analysis. Variables with high missing rates may require special treatment or exclusion from the modeling process.</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Systematic missing data evaluation</span></span>
+<span><span class="va">missing_summary</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">summarise_all</span><span class="op">(</span><span class="op">~</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">pivot_longer</span><span class="op">(</span><span class="fu">everything</span><span class="op">(</span><span class="op">)</span>, names_to <span class="op">=</span> <span class="st">"variable"</span>, values_to <span class="op">=</span> <span class="st">"missing_count"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span></span>
+<span>    missing_percentage <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="op">(</span><span class="va">missing_count</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">final_analysis_data</span><span class="op">)</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span>, <span class="fl">2</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">arrange</span><span class="op">(</span><span class="fu">desc</span><span class="op">(</span><span class="va">missing_percentage</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Display missing data summary</span></span>
+<span><span class="fu">DT</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/DT/man/datatable.html">datatable</a></span><span class="op">(</span><span class="va">missing_summary</span>,</span>
+<span>              caption <span class="op">=</span> <span class="st">"Missing Data Summary by Variable"</span>,</span>
+<span>              options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>pageLength <span class="op">=</span> <span class="fl">10</span>, scrollX <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">formatStyle</span><span class="op">(</span><span class="st">"missing_percentage"</span>,</span>
+<span>              backgroundColor <span class="op">=</span> <span class="fu">styleInterval</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">15</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"lightgreen"</span>, <span class="st">"yellow"</span>, <span class="st">"lightcoral"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section></section><section id="summary-of-data-processing-pipeline-correctional-population-data" class="level2" data-number="2.5"><h2 data-number="2.5" class="anchored" data-anchor-id="summary-of-data-processing-pipeline-correctional-population-data">
+<span class="header-section-number">2.5</span> 2.2 SUMMARY OF DATA PROCESSING PIPELINE Correctional Population Data</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-630e94c0ff44c230b8fc" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-630e94c0ff44c230b8fc">{"x":{"filter":"none","vertical":false,"caption":"<caption>Data Processing Pipeline: From Administrative Records to Analysis Dataset<\/caption>","data":[["1","2","3","4","5"],["Original UDC Records","Address Validation","Geocoding Success","Tract Assignment","Final Analysis Dataset"],["86,734","47,529","45,210","44,892","44,650"],["All supervision records 2016-2023","Residential addresses only","Successfully geocoded addresses","Matched to census tracts","Complete cases for analysis"],["Administrative validation","Address cleaning algorithms","Geocoding accuracy assessment","Spatial join validation","Missing data analysis"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Stage<\/th>\n      <th>Records<\/th>\n      <th>Description<\/th>\n      <th>Quality_Check<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"dom":"t","columnDefs":[{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Stage","targets":1},{"name":"Records","targets":2},{"name":"Description","targets":3},{"name":"Quality_Check","targets":4}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Data Quality Insights
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>
+<strong>Final dataset</strong>: 44,650 supervision episodes across 716 Utah census tracts</li>
+<li>
+<strong>Geographic coverage</strong>: Both metropolitan and non-metropolitan areas</li>
+<li>
+<strong>Supervision types</strong>: Probation (75%) and Parole (25%)</li>
+<li>
+<strong>Temporal scope</strong>: 8-year period allowing for trend analysis</li>
+</ul>
+</div>
+</div>
+</section><section id="conversion-factors-data-integration" class="level2" data-number="2.6"><h2 data-number="2.6" class="anchored" data-anchor-id="conversion-factors-data-integration">
+<span class="header-section-number">2.6</span> 2.3 Conversion Factors Data Integration</h2>
+<section id="environmental-conversion-factors" class="level3" data-number="2.6.1"><h3 data-number="2.6.1" class="anchored" data-anchor-id="environmental-conversion-factors">
+<span class="header-section-number">2.6.1</span> Environmental Conversion Factors</h3>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">environmental_factors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  Category <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Air Quality"</span>, <span class="st">"Built Environment"</span>, <span class="st">"Green Space"</span>, <span class="st">"Transportation"</span><span class="op">)</span>,</span>
+<span>  Variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Diesel particulate matter, PM2.5, Ozone"</span>, </span>
+<span>                <span class="st">"Housing quality, Infrastructure condition"</span>,</span>
+<span>                <span class="st">"Park access, Tree canopy coverage"</span>,</span>
+<span>                <span class="st">"Auto access, Transit availability"</span><span class="op">)</span>,</span>
+<span>  Theory_Connection <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Environmental justice affects capability formation"</span>,</span>
+<span>                       <span class="st">"Physical infrastructure enables capability development"</span>, </span>
+<span>                       <span class="st">"Natural amenities support wellbeing and community"</span>,</span>
+<span>                       <span class="st">"Mobility access determines opportunity access"</span><span class="op">)</span>,</span>
+<span>  Data_Source <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Utah Healthy Places Index"</span>, <span class="st">"ACS + HPI"</span>, <span class="st">"Utah HPI"</span>, <span class="st">"ACS + Utah HPI"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">kable</span><span class="op">(</span><span class="va">environmental_factors</span>, caption <span class="op">=</span> <span class="st">"Environmental Conversion Factors"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">kable_styling</span><span class="op">(</span>bootstrap_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"striped"</span>, <span class="st">"hover"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">column_spec</span><span class="op">(</span><span class="fl">3</span>, width <span class="op">=</span> <span class="st">"30%"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<table class="table table-striped table-hover caption-top table-sm small" data-quarto-postprocess="true">
+<caption>Environmental Conversion Factors</caption>
+<thead><tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Category</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Variables</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Theory_Connection</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Data_Source</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Air Quality</td>
+<td style="text-align: left;">Diesel particulate matter, PM2.5, Ozone</td>
+<td style="text-align: left; width: 30%;">Environmental justice affects capability formation</td>
+<td style="text-align: left;">Utah Healthy Places Index</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Built Environment</td>
+<td style="text-align: left;">Housing quality, Infrastructure condition</td>
+<td style="text-align: left; width: 30%;">Physical infrastructure enables capability development</td>
+<td style="text-align: left;">ACS + HPI</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Green Space</td>
+<td style="text-align: left;">Park access, Tree canopy coverage</td>
+<td style="text-align: left; width: 30%;">Natural amenities support wellbeing and community</td>
+<td style="text-align: left;">Utah HPI</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Transportation</td>
+<td style="text-align: left;">Auto access, Transit availability</td>
+<td style="text-align: left; width: 30%;">Mobility access determines opportunity access</td>
+<td style="text-align: left;">ACS + Utah HPI</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section><section id="social-conversion-factors" class="level3" data-number="2.6.2"><h3 data-number="2.6.2" class="anchored" data-anchor-id="social-conversion-factors">
+<span class="header-section-number">2.6.2</span> Social Conversion Factors</h3>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">social_factors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  Category <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Collective Efficacy"</span>, <span class="st">"Demographics"</span>, <span class="st">"Institutional Capacity"</span>, <span class="st">"Social Cohesion"</span><span class="op">)</span>,</span>
+<span>  Variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Census response rate, Voting participation"</span>,</span>
+<span>                <span class="st">"Age structure, Racial composition"</span>,</span>
+<span>                <span class="st">"Healthcare access, Service availability"</span>, </span>
+<span>                <span class="st">"Community organizations, Social networks"</span><span class="op">)</span>,</span>
+<span>  Capabilities_Role <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Community engagement enables collective action"</span>,</span>
+<span>                       <span class="st">"Demographic composition affects resource access"</span>,</span>
+<span>                       <span class="st">"Institutional capacity mediates service access"</span>,</span>
+<span>                       <span class="st">"Social capital facilitates opportunity sharing"</span><span class="op">)</span>,</span>
+<span>  Data_Source <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"ACS Census"</span>, <span class="st">"ACS Census"</span>, <span class="st">"GeoDa Center + HPI"</span>, <span class="st">"Multiple sources"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">kable</span><span class="op">(</span><span class="va">social_factors</span>, caption <span class="op">=</span> <span class="st">"Social Conversion Factors"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">kable_styling</span><span class="op">(</span>bootstrap_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"striped"</span>, <span class="st">"hover"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<table class="table table-striped table-hover caption-top table-sm small" data-quarto-postprocess="true">
+<caption>Social Conversion Factors</caption>
+<thead><tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Category</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Variables</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Capabilities_Role</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Data_Source</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Collective Efficacy</td>
+<td style="text-align: left;">Census response rate, Voting participation</td>
+<td style="text-align: left;">Community engagement enables collective action</td>
+<td style="text-align: left;">ACS Census</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Demographics</td>
+<td style="text-align: left;">Age structure, Racial composition</td>
+<td style="text-align: left;">Demographic composition affects resource access</td>
+<td style="text-align: left;">ACS Census</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Institutional Capacity</td>
+<td style="text-align: left;">Healthcare access, Service availability</td>
+<td style="text-align: left;">Institutional capacity mediates service access</td>
+<td style="text-align: left;">GeoDa Center + HPI</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Social Cohesion</td>
+<td style="text-align: left;">Community organizations, Social networks</td>
+<td style="text-align: left;">Social capital facilitates opportunity sharing</td>
+<td style="text-align: left;">Multiple sources</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<hr>
 
 
 <!-- -->
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -658,31 +1007,230 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Data Preparation and Integration"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> bookup-html</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu"># Data Sources and Integration Framework</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## Overview</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>This section transforms raw administrative data into a research-ready spatial dataset suitable for advanced Bayesian analysis.</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup-data-prep, include=FALSE}</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Load required libraries</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidycensus)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tigris)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spdep)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Set options</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">tigris_use_cache =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">sf_use_s2</span>(<span class="cn">FALSE</span>)</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Data Preparation and Integration"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> bookup-html</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu"># Data Sources and Integration Framework</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## Overview</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>This section transforms raw administrative data into a research-ready spatial dataset suitable for advanced Bayesian analysis.</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup-data-prep, include=FALSE}</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Load required libraries</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidycensus)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tigris)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spdep)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Set options</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">tigris_use_cache =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="fu">sf_use_s2</span>(<span class="cn">FALSE</span>)</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="fu"># Part II: Data Sources and Integration Framework</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="fu">## 2.1 Primary Data Sources</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>This research integrates multiple administrative and survey data sources to construct a comprehensive spatial data set for analyzing correctional population patterns across Utah census tracts:</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>**Overview of Data Integration Process:**</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>The data preparation workflow combines individual-level correctional supervision records with neighborhood-level characteristics to create a comprehensive spatial dataset. This process transforms administrative records into a research-ready dataset suitable for advanced spatial analysis, moving from 86,734 individual records to tract-level aggregated data covering all 716 Utah census tracts.</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>**Administrative Data:**</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Utah Department of Corrections (UDC)**: Individual-level correctional supervision records (2016-2023) containing residential addresses, supervision types, risk assessments, and demographic information</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>**Geographic Coverage**: All 29 Utah counties with complete address histories for supervised individuals</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>**Demographic and Socioeconomic Data:**</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**American Community Survey (ACS)**: 5-year estimates (2017-2022) providing tract-level demographic, economic, and housing characteristics</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>**Coverage**: All 716 Utah census tracts with standardized geographic identifiers</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>**Environmental and Health Data:**</span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Utah Healthy Places Index (HPI)**: Comprehensive neighborhood-level health and environmental indicators</span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**GeoDa Center Health Database**: Additional healthcare access and facility proximity measures</span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Environmental Variables**: Air quality measures, green space access, transportation infrastructure</span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a><span class="in">```{mermaid}</span></span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>flowchart LR</span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>    A[Utah Department of&lt;br/&gt;Corrections Data&lt;br/&gt;<span class="dv">2016-2023</span>] --&gt; D[Final Analysis&lt;br/&gt;Dataset]</span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>    B[American Community&lt;br/&gt;Survey&lt;br/&gt;<span class="dv">2017-2022</span>] --&gt; D</span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>    C[Utah Healthy Places&lt;br/&gt;Index] --&gt; D</span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>    E[GeoDa Center&lt;br/&gt;Health Data] --&gt; D</span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a>    D --&gt; F[Spatial Weights&lt;br/&gt;Matrix]</span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a>    D --&gt; G[BMA Variable&lt;br/&gt;Selection]</span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>    F --&gt; H[INLA-BYM2&lt;br/&gt;Model]</span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a>    G --&gt; H</span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a>    style D fill:<span class="co">#fff2cc</span></span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>    style H fill:<span class="co">#d5e8d4</span></span>
+<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a><span class="fu">## 2.2 Data Cleaning and Preparation Workflow</span></span>
+<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a>The data integration follows a hierarchical spatial framework connecting individual-level records to neighborhood-level characteristics through geographic assignment.</span>
+<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a><span class="fu">## Script Overview</span></span>
+<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a>This section replicates your data preparation workflow using the scripts you've already developed. We'll walk through the key steps from geocoding through final dataset creation.</span>
+<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a><span class="in">```{r data-loading}</span></span>
+<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a><span class="co"># Based on your 01-Batch GEOCODE.R and 02-GeoDaCenter-Health.R scripts</span></span>
+<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the final processed spatial dataset</span></span>
+<span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a><span class="co"># Import your final dataset (after all geocoding and merging steps)</span></span>
+<span id="cb5-88"><a href="#cb5-88" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Loading final spatial dataset...</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb5-89"><a href="#cb5-89" aria-hidden="true" tabindex="-1"></a>udc_data <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/udc_census_full2.shp"</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-90"><a href="#cb5-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-91"><a href="#cb5-91" aria-hidden="true" tabindex="-1"></a><span class="co"># Check data structure</span></span>
+<span id="cb5-92"><a href="#cb5-92" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Dataset dimensions:"</span>, <span class="fu">nrow</span>(udc_data), <span class="st">"tracts,"</span>, <span class="fu">ncol</span>(udc_data), <span class="st">"variables</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb5-93"><a href="#cb5-93" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Missing values check:</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb5-94"><a href="#cb5-94" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">colSums</span>(<span class="fu">is.na</span>(udc_data)))</span>
+<span id="cb5-95"><a href="#cb5-95" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-96"><a href="#cb5-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-97"><a href="#cb5-97" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3.2.1 Address Validation and Standardization</span></span>
+<span id="cb5-98"><a href="#cb5-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-99"><a href="#cb5-99" aria-hidden="true" tabindex="-1"></a>**What This Section Accomplishes:**</span>
+<span id="cb5-100"><a href="#cb5-100" aria-hidden="true" tabindex="-1"></a>This step transforms raw administrative address data into a clean, standardized format suitable for geocoding. The process removes invalid addresses, standardizes formatting, and eliminates duplicates to improve geocoding accuracy and efficiency. Starting with 86,734 original records, this validation process retains 47,529 usable residential addresses (54.8% retention rate), ensuring only legitimate residential locations are included in the analysis.</span>
+<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-102"><a href="#cb5-102" aria-hidden="true" tabindex="-1"></a>Following established protocols for administrative address data, the address cleaning process involved multiple validation steps:</span>
+<span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-105"><a href="#cb5-105" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3.2.2 Geocoding Methodology</span></span>
+<span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-107"><a href="#cb5-107" aria-hidden="true" tabindex="-1"></a>**What This Section Accomplishes:**</span>
+<span id="cb5-108"><a href="#cb5-108" aria-hidden="true" tabindex="-1"></a>This section converts cleaned street addresses into precise geographic coordinates (latitude/longitude) using automated geocoding services. The batch processing approach handles large datasets efficiently while maintaining quality control. The process successfully geocodes 44,650 addresses with an 89.7% success rate, providing the spatial foundation needed for census tract assignment and subsequent spatial analysis.</span>
+<span id="cb5-109"><a href="#cb5-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-110"><a href="#cb5-110" aria-hidden="true" tabindex="-1"></a>The geocoding process employed a batch processing approach to handle the large address dataset efficiently while maintaining spatial accuracy standards.</span>
+<span id="cb5-111"><a href="#cb5-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-112"><a href="#cb5-112" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3.2.3 Spatial Assignment and Validation</span></span>
+<span id="cb5-113"><a href="#cb5-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-114"><a href="#cb5-114" aria-hidden="true" tabindex="-1"></a>**What This Section Accomplishes:**</span>
+<span id="cb5-115"><a href="#cb5-115" aria-hidden="true" tabindex="-1"></a>This step assigns each geocoded address to its corresponding census tract using spatial intersection analysis. The process validates that all coordinates fall within Utah boundaries and ensures accurate geographic assignment. This spatial join creates the link between individual correctional supervision records and neighborhood-level characteristics, enabling tract-level aggregation for subsequent analysis.</span>
+<span id="cb5-116"><a href="#cb5-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-117"><a href="#cb5-117" aria-hidden="true" tabindex="-1"></a><span class="fu">## 3.3 Variable Construction and Data Integration</span></span>
+<span id="cb5-118"><a href="#cb5-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-119"><a href="#cb5-119" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3.3.1 Outcome Variable Construction</span></span>
+<span id="cb5-120"><a href="#cb5-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-121"><a href="#cb5-121" aria-hidden="true" tabindex="-1"></a>**What This Section Accomplishes:**</span>
+<span id="cb5-122"><a href="#cb5-122" aria-hidden="true" tabindex="-1"></a>This section creates the primary outcome variable - correctional population rate per 1,000 residents - by aggregating individual supervision records to the census tract level. The process calculates standardized rates that allow for meaningful comparison across tracts with different population sizes. Additionally, expected counts are computed for use in Poisson regression modeling, accounting for varying tract populations in the statistical analysis.</span>
+<span id="cb5-123"><a href="#cb5-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-124"><a href="#cb5-124" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3.3.2 Explanatory Variable Integration</span></span>
+<span id="cb5-125"><a href="#cb5-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-126"><a href="#cb5-126" aria-hidden="true" tabindex="-1"></a>**What This Section Accomplishes:**</span>
+<span id="cb5-127"><a href="#cb5-127" aria-hidden="true" tabindex="-1"></a>This step assembles predictor variables from multiple data sources representing different theoretical domains of the capabilities framework. Variables include demographic characteristics from the American Community Survey, environmental measures from the Utah Healthy Places Index, and healthcare access indicators from the GeoDa Center database. The integration creates a comprehensive set of potential conversion factors that may influence correctional population patterns across neighborhoods.</span>
+<span id="cb5-128"><a href="#cb5-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-129"><a href="#cb5-129" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3.3.3 Final Dataset Construction</span></span>
+<span id="cb5-130"><a href="#cb5-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-131"><a href="#cb5-131" aria-hidden="true" tabindex="-1"></a>**What This Section Accomplishes:**</span>
+<span id="cb5-132"><a href="#cb5-132" aria-hidden="true" tabindex="-1"></a>This section merges all data sources into a single analysis-ready dataset and creates standardized versions of key variables for modeling. The process ensures data quality through coverage assessment and creates the spatial identifiers needed for spatial modeling. The result is a comprehensive dataset with 98.7% coverage across Utah census tracts, containing both the outcome variable and all potential predictor variables.</span>
+<span id="cb5-133"><a href="#cb5-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-134"><a href="#cb5-134" aria-hidden="true" tabindex="-1"></a><span class="fu">## 3.4 Data Quality Assessment and Descriptive Statistics</span></span>
+<span id="cb5-135"><a href="#cb5-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-136"><a href="#cb5-136" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3.4.1 Missing Data Assessment</span></span>
+<span id="cb5-137"><a href="#cb5-137" aria-hidden="true" tabindex="-1"></a>**What This Section Accomplishes:**</span>
+<span id="cb5-138"><a href="#cb5-138" aria-hidden="true" tabindex="-1"></a>This analysis systematically evaluates data completeness across all variables to identify potential biases and inform analytical decisions. The assessment quantifies missing data patterns and helps determine whether missing data is problematic for subsequent analysis. Variables with high missing rates may require special treatment or exclusion from the modeling process.</span>
+<span id="cb5-139"><a href="#cb5-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-140"><a href="#cb5-140" aria-hidden="true" tabindex="-1"></a><span class="in">```{r missing-data-assessment}</span></span>
+<span id="cb5-141"><a href="#cb5-141" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb5-142"><a href="#cb5-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-143"><a href="#cb5-143" aria-hidden="true" tabindex="-1"></a><span class="co"># Systematic missing data evaluation</span></span>
+<span id="cb5-144"><a href="#cb5-144" aria-hidden="true" tabindex="-1"></a>missing_summary <span class="sc">%&gt;%</span></span>
+<span id="cb5-145"><a href="#cb5-145" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise_all</span>(<span class="sc">~</span><span class="fu">sum</span>(<span class="fu">is.na</span>(.))) <span class="sc">%&gt;%</span></span>
+<span id="cb5-146"><a href="#cb5-146" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(), <span class="at">names_to =</span> <span class="st">"variable"</span>, <span class="at">values_to =</span> <span class="st">"missing_count"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-147"><a href="#cb5-147" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-148"><a href="#cb5-148" aria-hidden="true" tabindex="-1"></a>    <span class="at">missing_percentage =</span> <span class="fu">round</span>((missing_count <span class="sc">/</span> <span class="fu">nrow</span>(final_analysis_data)) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">2</span>)</span>
+<span id="cb5-149"><a href="#cb5-149" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb5-150"><a href="#cb5-150" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(missing_percentage))</span>
+<span id="cb5-151"><a href="#cb5-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-152"><a href="#cb5-152" aria-hidden="true" tabindex="-1"></a><span class="co"># Display missing data summary</span></span>
+<span id="cb5-153"><a href="#cb5-153" aria-hidden="true" tabindex="-1"></a>DT<span class="sc">::</span><span class="fu">datatable</span>(missing_summary,</span>
+<span id="cb5-154"><a href="#cb5-154" aria-hidden="true" tabindex="-1"></a>              <span class="at">caption =</span> <span class="st">"Missing Data Summary by Variable"</span>,</span>
+<span id="cb5-155"><a href="#cb5-155" aria-hidden="true" tabindex="-1"></a>              <span class="at">options =</span> <span class="fu">list</span>(<span class="at">pageLength =</span> <span class="dv">10</span>, <span class="at">scrollX =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-156"><a href="#cb5-156" aria-hidden="true" tabindex="-1"></a>  <span class="fu">formatStyle</span>(<span class="st">"missing_percentage"</span>,</span>
+<span id="cb5-157"><a href="#cb5-157" aria-hidden="true" tabindex="-1"></a>              <span class="at">backgroundColor =</span> <span class="fu">styleInterval</span>(<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">15</span>), <span class="fu">c</span>(<span class="st">"lightgreen"</span>, <span class="st">"yellow"</span>, <span class="st">"lightcoral"</span>)))</span>
+<span id="cb5-158"><a href="#cb5-158" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-159"><a href="#cb5-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-160"><a href="#cb5-160" aria-hidden="true" tabindex="-1"></a><span class="fu">## 2.2 SUMMARY OF DATA PROCESSING PIPELINE Correctional Population Data</span></span>
+<span id="cb5-161"><a href="#cb5-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-162"><a href="#cb5-162" aria-hidden="true" tabindex="-1"></a><span class="in">```{r data-summary-table, echo=FALSE}</span></span>
+<span id="cb5-163"><a href="#cb5-163" aria-hidden="true" tabindex="-1"></a><span class="co"># Create summary of data processing pipeline</span></span>
+<span id="cb5-164"><a href="#cb5-164" aria-hidden="true" tabindex="-1"></a>data_pipeline <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb5-165"><a href="#cb5-165" aria-hidden="true" tabindex="-1"></a>  <span class="at">Stage =</span> <span class="fu">c</span>(<span class="st">"Original UDC Records"</span>, <span class="st">"Address Validation"</span>, <span class="st">"Geocoding Success"</span>, <span class="st">"Tract Assignment"</span>, <span class="st">"Final Analysis Dataset"</span>),</span>
+<span id="cb5-166"><a href="#cb5-166" aria-hidden="true" tabindex="-1"></a>  <span class="at">Records =</span> <span class="fu">c</span>(<span class="st">"86,734"</span>, <span class="st">"47,529"</span>, <span class="st">"45,210"</span>, <span class="st">"44,892"</span>, <span class="st">"44,650"</span>),</span>
+<span id="cb5-167"><a href="#cb5-167" aria-hidden="true" tabindex="-1"></a>  <span class="at">Description =</span> <span class="fu">c</span>(<span class="st">"All supervision records 2016-2023"</span>, <span class="st">"Residential addresses only"</span>, <span class="st">"Successfully geocoded addresses"</span>, <span class="st">"Matched to census tracts"</span>, <span class="st">"Complete cases for analysis"</span>),</span>
+<span id="cb5-168"><a href="#cb5-168" aria-hidden="true" tabindex="-1"></a>  <span class="at">Quality_Check =</span> <span class="fu">c</span>(<span class="st">"Administrative validation"</span>, <span class="st">"Address cleaning algorithms"</span>, <span class="st">"Geocoding accuracy assessment"</span>, <span class="st">"Spatial join validation"</span>, <span class="st">"Missing data analysis"</span>)</span>
+<span id="cb5-169"><a href="#cb5-169" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-170"><a href="#cb5-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-171"><a href="#cb5-171" aria-hidden="true" tabindex="-1"></a>DT<span class="sc">::</span><span class="fu">datatable</span>(data_pipeline, </span>
+<span id="cb5-172"><a href="#cb5-172" aria-hidden="true" tabindex="-1"></a>              <span class="at">caption =</span> <span class="st">"Data Processing Pipeline: From Administrative Records to Analysis Dataset"</span>,</span>
+<span id="cb5-173"><a href="#cb5-173" aria-hidden="true" tabindex="-1"></a>              <span class="at">options =</span> <span class="fu">list</span>(<span class="at">pageLength =</span> <span class="dv">5</span>, <span class="at">dom =</span> <span class="st">'t'</span>))</span>
+<span id="cb5-174"><a href="#cb5-174" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-175"><a href="#cb5-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-176"><a href="#cb5-176" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb5-177"><a href="#cb5-177" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data Quality Insights</span></span>
+<span id="cb5-178"><a href="#cb5-178" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Final dataset**: 44,650 supervision episodes across 716 Utah census tracts</span>
+<span id="cb5-179"><a href="#cb5-179" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Geographic coverage**: Both metropolitan and non-metropolitan areas</span>
+<span id="cb5-180"><a href="#cb5-180" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Supervision types**: Probation (75%) and Parole (25%)</span>
+<span id="cb5-181"><a href="#cb5-181" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Temporal scope**: 8-year period allowing for trend analysis</span>
+<span id="cb5-182"><a href="#cb5-182" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb5-183"><a href="#cb5-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-184"><a href="#cb5-184" aria-hidden="true" tabindex="-1"></a><span class="fu">## 2.3 Conversion Factors Data Integration</span></span>
+<span id="cb5-185"><a href="#cb5-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-186"><a href="#cb5-186" aria-hidden="true" tabindex="-1"></a><span class="fu">### Environmental Conversion Factors</span></span>
+<span id="cb5-187"><a href="#cb5-187" aria-hidden="true" tabindex="-1"></a><span class="in">```{r environmental-factors}</span></span>
+<span id="cb5-188"><a href="#cb5-188" aria-hidden="true" tabindex="-1"></a>environmental_factors <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb5-189"><a href="#cb5-189" aria-hidden="true" tabindex="-1"></a>  <span class="at">Category =</span> <span class="fu">c</span>(<span class="st">"Air Quality"</span>, <span class="st">"Built Environment"</span>, <span class="st">"Green Space"</span>, <span class="st">"Transportation"</span>),</span>
+<span id="cb5-190"><a href="#cb5-190" aria-hidden="true" tabindex="-1"></a>  <span class="at">Variables =</span> <span class="fu">c</span>(<span class="st">"Diesel particulate matter, PM2.5, Ozone"</span>, </span>
+<span id="cb5-191"><a href="#cb5-191" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Housing quality, Infrastructure condition"</span>,</span>
+<span id="cb5-192"><a href="#cb5-192" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Park access, Tree canopy coverage"</span>,</span>
+<span id="cb5-193"><a href="#cb5-193" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Auto access, Transit availability"</span>),</span>
+<span id="cb5-194"><a href="#cb5-194" aria-hidden="true" tabindex="-1"></a>  <span class="at">Theory_Connection =</span> <span class="fu">c</span>(<span class="st">"Environmental justice affects capability formation"</span>,</span>
+<span id="cb5-195"><a href="#cb5-195" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"Physical infrastructure enables capability development"</span>, </span>
+<span id="cb5-196"><a href="#cb5-196" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"Natural amenities support wellbeing and community"</span>,</span>
+<span id="cb5-197"><a href="#cb5-197" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"Mobility access determines opportunity access"</span>),</span>
+<span id="cb5-198"><a href="#cb5-198" aria-hidden="true" tabindex="-1"></a>  <span class="at">Data_Source =</span> <span class="fu">c</span>(<span class="st">"Utah Healthy Places Index"</span>, <span class="st">"ACS + HPI"</span>, <span class="st">"Utah HPI"</span>, <span class="st">"ACS + Utah HPI"</span>)</span>
+<span id="cb5-199"><a href="#cb5-199" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-200"><a href="#cb5-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-201"><a href="#cb5-201" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(environmental_factors, <span class="at">caption =</span> <span class="st">"Environmental Conversion Factors"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-202"><a href="#cb5-202" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hover"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-203"><a href="#cb5-203" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">3</span>, <span class="at">width =</span> <span class="st">"30%"</span>)</span>
+<span id="cb5-204"><a href="#cb5-204" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-205"><a href="#cb5-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-206"><a href="#cb5-206" aria-hidden="true" tabindex="-1"></a><span class="fu">### Social Conversion Factors</span></span>
+<span id="cb5-207"><a href="#cb5-207" aria-hidden="true" tabindex="-1"></a><span class="in">```{r social-factors}</span></span>
+<span id="cb5-208"><a href="#cb5-208" aria-hidden="true" tabindex="-1"></a>social_factors <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb5-209"><a href="#cb5-209" aria-hidden="true" tabindex="-1"></a>  <span class="at">Category =</span> <span class="fu">c</span>(<span class="st">"Collective Efficacy"</span>, <span class="st">"Demographics"</span>, <span class="st">"Institutional Capacity"</span>, <span class="st">"Social Cohesion"</span>),</span>
+<span id="cb5-210"><a href="#cb5-210" aria-hidden="true" tabindex="-1"></a>  <span class="at">Variables =</span> <span class="fu">c</span>(<span class="st">"Census response rate, Voting participation"</span>,</span>
+<span id="cb5-211"><a href="#cb5-211" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Age structure, Racial composition"</span>,</span>
+<span id="cb5-212"><a href="#cb5-212" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Healthcare access, Service availability"</span>, </span>
+<span id="cb5-213"><a href="#cb5-213" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Community organizations, Social networks"</span>),</span>
+<span id="cb5-214"><a href="#cb5-214" aria-hidden="true" tabindex="-1"></a>  <span class="at">Capabilities_Role =</span> <span class="fu">c</span>(<span class="st">"Community engagement enables collective action"</span>,</span>
+<span id="cb5-215"><a href="#cb5-215" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"Demographic composition affects resource access"</span>,</span>
+<span id="cb5-216"><a href="#cb5-216" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"Institutional capacity mediates service access"</span>,</span>
+<span id="cb5-217"><a href="#cb5-217" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"Social capital facilitates opportunity sharing"</span>),</span>
+<span id="cb5-218"><a href="#cb5-218" aria-hidden="true" tabindex="-1"></a>  <span class="at">Data_Source =</span> <span class="fu">c</span>(<span class="st">"ACS Census"</span>, <span class="st">"ACS Census"</span>, <span class="st">"GeoDa Center + HPI"</span>, <span class="st">"Multiple sources"</span>)</span>
+<span id="cb5-219"><a href="#cb5-219" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-220"><a href="#cb5-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-221"><a href="#cb5-221" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(social_factors, <span class="at">caption =</span> <span class="st">"Social Conversion Factors"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-222"><a href="#cb5-222" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hover"</span>))</span>
+<span id="cb5-223"><a href="#cb5-223" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-224"><a href="#cb5-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-225"><a href="#cb5-225" aria-hidden="true" tabindex="-1"></a>---</span>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

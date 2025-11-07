@@ -3,8 +3,342 @@ title: "Results and Spatial Analysis"
 format: bookup-html
 ---
 
-# Key Findings
+```{r inla-setup}
+library(tidyverse)
+library(sf)
+library(tidycensus)
+library(tigris)
+library(spdep)
+library(INLA)
+library(BMA)
+library(leaflet)
+library(plotly)
+library(dplyr)
+library(DT)
+library(kableExtra)
+library(corrplot)
+library(car)
+library(viridis)
+library(patchwork)
+library(ggtext)
+library(tidyr)
+library(ggplot2)
 
-This chapter presents the main results from the INLA-BYM2 spatial analysis...
 
-[Your results content]
+
+# Set global options
+options(tigris_use_cache = TRUE)
+sf_use_s2(FALSE)
+
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center",
+  cache = TRUE
+)
+
+
+```
+
+```{r data-import, include=FALSE}
+# Import spatial data
+library(sf)
+model_data_hpi <- st_read("data/model_data_hpi.shp")
+```
+
+# Empirical Results: Capability Deprivations
+
+This chapter presents the main results from the INLA-BYM2 spatial analysis.
+
+```{r, echo=FALSE, fig.align = 'center', out.width="100%"}
+knitr::include_graphics("figures/Significant.png")
+```
+
+- A one-unit increase in the DIESELPM (Environmental) is associated with approximately a 494.7% increase in the correctional population
+- Census Response: -73.6 Strong negative relationship ➡️ Suggests community engagement & collective efficacy matters!
+- Automobile access: -91
+- Homeownership: -40.8
+- Bachelor's Degree: -88.4, Significant spatial clustering
+* Education-employment interaction
+
+
+Credible Intervals:
+
+    - 95% probability that the true parameter lies within a specific range, given the data
+    - Not significant: Not statistically significant (CI crosses zero). Very small effect size
+    
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Key Effects on Supervision Rates {.unnumbered} 
+- Environmental conditions (+494.7%)
+- Transportation barriers (-91.0%)
+- Educational access (-88.4%)
+- Healthcare availability (-73.3%)
+:::
+
+::: {.column width="50%"}
+### Interpretation {.unnumbered} 
+- Place strongly shapes outcomes
+- Multiple barriers compound
+- Resources matter significantly
+- Context affects success
+
+:::
+
+::::
+
+
+# Targeted Strategies: High-Risk Areas (Negative ui)
+
+:::: {.columns}
+
+::: {.column width="50%"}
+1. **Resource Development**
+   - Expand treatment options
+   - Increase job programs
+   - Improve transportation
+   - Build support systems
+:::
+
+::: {.column width="50%"}
+2. **Barrier Reduction**
+   - Address access issues
+   - Enhance coordination
+   - Develop infrastructure
+   - Strengthen networks
+
+:::
+
+::::
+
+
+
+# Relative Risk: Results Visualization and Policy Translation
+Spatial Patterns: Relative Risk Mapping
+
+### Relative Risk: Air Pollution
+*Relative Risk values > 1, this means there is higher risk than expected. Areas with higher RR values likely have more Diesel Particulate Matter than expected. 
+*2.42 in Carbon County, then there is 142% more correctional population than expected. Or a place like Morgan county is 0.21 RR has 79% lower correctional population than expected which likely represents an area with better air quality.
+
+
+```{r LEAFLET, echo=FALSE}
+
+pal <- colorQuantile(palette = "YlOrRd", domain = model_data_hpi$RR, n= 7)
+
+
+labels <- sprintf("<strong> %s </strong> <br/>
+  Observed: %s <br/> Expected: %s <br/>
+  Air Pollution: %s <br/> SIR: %s <br/> Relative Risk: %s (%s, %s)",
+                  model_data_hpi$NAM, model_data_hpi$corr_pp, round(model_data_hpi$expectd, 2),
+                  model_data_hpi$dieslpm, round(model_data_hpi$SIR, 2), round(model_data_hpi$RR, 2),
+                  round(model_data_hpi$LL, 2), round(model_data_hpi$UL, 2)
+) %>% lapply(htmltools::HTML)
+
+#LEAFLET MAPPING!
+lRR <- leaflet(model_data_hpi) %>%
+  addTiles() %>%
+  addPolygons(
+    color = "grey", weight = 1, fillColor = ~ pal(RR),
+    fillOpacity = 0.5,
+    highlightOptions = highlightOptions(weight = 4),
+    label = labels,
+    labelOptions = labelOptions(
+      style =
+        list(
+          "font-weight" = "normal",
+          padding = "3px 8px"
+        ),
+      textsize = "15px", direction = "auto"
+    )
+  ) %>%
+  addLegend(
+    pal = pal, values = ~RR, opacity = 0.5, title = "Relative Risk",
+    position = "bottomright",
+    labelFormat(transform = function(RR) sort(RR, increasing = TRUE))
+  )
+lRR
+```
+
+::: {.callout-note}
+## Map Interpretation
+- **Red areas**: Higher than expected correctional supervision rates (RR > 1.5)
+- **Yellow areas**: Near expected rates (RR 0.8-1.2)  
+- **Light areas**: Lower than expected rates (RR < 0.8)
+- **Pattern significance**: Spatial clustering suggests collective capabilities matter
+:::
+
+"Areas with poor air quality show 147% higher correctional supervision rates, suggesting 
+environmental conditions may be an important upstream factor in justice system involvement"
+* Census tracts with poor air quality have 2.42 times higher risk
+  of elevated correctional populations
+* For areas with similar characteristics but better air quality,
+  this tract shows 147% higher correctional supervision rates
+* Air quality appears to be a significant environmental risk factor
+  associated with correctional supervision rates
+  
+Potential Pathway: Poor Air Quality 
+  → Health Issues
+    → Economic Stress
+      → Community Instability
+        → Higher Supervision Rates
+
+Contributing Factors:
+1. Health impacts affect employment
+2. Medical costs create financial strain
+3. Environmental stress on communities
+4. Reduced outdoor activities/community engagement
+
+## Key Findings: Environmental Justice and Capabilities
+
+### Primary Finding: Air Pollution Impact
+
+::: {.theory-box}
+**Major Discovery**: 
+
+- A one standard deviation increase in diesel particulate matter is associated with a **494.7% increase** in correctional supervision rates, even after controlling for poverty, demographics, and other factors.
+
+**Capabilities Interpretation**: 
+
+Air pollution serves as a powerful **environmental conversion factor** that constrains capability formation through:
+
+- Health impacts affecting employment stability
+- Environmental stress reducing community cohesion  
+- Disproportionate burden on low-income communities
+- Compound effects with other environmental hazards
+:::
+
+
+# Environmental Conditions as Conversion Factors
+
+## Relative Risk: Air Quality Impact on Supervision
+- **Relative Risk (RR) becomes a measure of capability deprivation in space.** Combines fixed and random effects. Accounts for spatial structure.  
+```latex 
+exp(α + Σβjxij + ui + vi)
+```
+- RR > 1, this means there is higher risk than expected. Areas with higher RR values likely have more Diesel Particulate Matter than expected. **High RR clusters → capability deprivation** (RR = 1: Expected risk level. RR < 1: Lower risk than expected)
+
+- 2.42 in Carbon County, then there is 142% more correctional population than expected. Or a place like Morgan county is 0.21 RR has 79% lower correctional population than expected which likely represents an area with better air quality. 
+
+
+
+#### Pathway to Supervision
+
+1. **Direct Health Effects**
+   - Increased stress
+   - Physical health impacts
+   - Mental health strain
+   - Cognitive effects
+
+2. **Economic Impact**
+   - Healthcare costs
+   - Work disruption
+   - Medical expenses
+   - Employment stability
+   
+3. **Social Consequences**
+   - Reduced outdoor activity
+   - Limited community engagement
+   - Restricted social networks
+   - Decreased collective efficacy
+   
+## Geographic Distribution
+
+### Clustering Effects
+- Environmental hazards concentrate spatially
+- Poor air quality clusters with other disadvantages
+- Health impacts compound over time
+- Community capabilities constrained
+
+### Relative Risk Interpretation
+- RR > 2.0: Severe capability constraint
+- RR 1.5-2.0: Moderate impact
+- RR < 1.0: Better environmental conditions
+"Areas with poor air quality show 147% higher correctional supervision rates, suggesting 
+environmental conditions may be an important upstream factor in justice system involvement"
+* Census tracts with poor air quality have 2.42 times higher risk
+  of elevated correctional populations
+* For areas with similar characteristics but better air quality,
+  this tract shows 147% higher correctional supervision rates
+* Air quality appears to be a significant environmental risk factor
+  associated with correctional supervision rates
+  
+Potential Pathway: Poor Air Quality 
+  → Health Issues
+    → Economic Stress
+      → Community Instability
+        → Higher Supervision Rates
+
+Contributing Factors:
+1. Health impacts affect employment
+2. Medical costs create financial strain
+3. Environmental stress on communities
+4. Reduced outdoor activities/community engagement
+
+
+# Statistical Results
+
+```{r results-table, echo=FALSE}
+results_df <-read.csv("data/results_df.csv")
+
+DT::datatable(results_df,
+              options = list(
+  columnDefs = list(list(className = 'dt-center', targets = 5)),
+  pageLength = 5,
+  order=list(list(10,'desc')),
+  lengthMenu = c(5, 10, 15, 20)))
+              
+```
+
+# Spatial Components
+```{r spatial-stats}
+spatial_components <- data.frame(
+  Component = c("Structured (Phi)", "Precision (re_u)", "Precision (re_v)"),
+  Value = c(0.594, 2.79, 21100),
+  Interpretation = c("59.4% spatial structure",
+                    "Strong spatial dependence",
+                    "Low unstructured variation")
+)
+
+DT::datatable(spatial_components,
+              options = list(pageLength = 5),
+              rownames = FALSE)
+```
+
+ 
+### Protective Factors: Access and Engagement
+
+```{r protective-factors-viz}
+protective_data <- data.frame(
+  Factor = c("Census Response\n(Community Engagement)", 
+             "Automobile Access\n(Transportation)", 
+             "Health Insurance\n(Healthcare Access)",
+             "Employment Rate\n(Economic Opportunity)"),
+  Risk_Reduction = c(73.6, 91.0, 72.6, 50.0),
+  Theory_Connection = c("Collective Efficacy", "Mobility Access", "Health Security", "Economic Stability")
+)
+
+ggplot(protective_data, aes(x = reorder(Factor, Risk_Reduction), y = Risk_Reduction, 
+                           fill = Theory_Connection)) +
+  geom_col(alpha = 0.8) +
+  geom_text(aes(label = paste0("-", Risk_Reduction, "%")), 
+            hjust = -0.1, size = 4, fontface = "bold") +
+  coord_flip() +
+  scale_fill_viridis_d(option = "plasma", alpha = 0.8) +
+  labs(x = "Conversion Factor", 
+       y = "Risk Reduction (%)",
+       title = "Protective Conversion Factors",
+       subtitle = "How access and engagement reduce correctional supervision risk",
+       fill = "Theoretical Domain") +
+  theme_minimal() +
+  theme(text = element_text(size = 12))
+```
+
+
+### Implementation Focus
+- Target highest-need areas
+- Address multiple barriers
+- Build community capacity
+- Enhance coordination

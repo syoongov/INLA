@@ -3,31 +3,43 @@ title: "Spatial Capabilities and Community Corrections"
 format: bookup-html
 ---
 
-# Welcome to the Tutorial
+# Understanding Place-Based Conversion Factors through Bayesian Spatial Analysis
 
-This interactive tutorial demonstrates how to integrate **spatial capabilities theory** with **Integrated Nested Laplace Approximation (INLA)** methodology.
+#### Sheena Yoon, PhD Candidate in Economics, University of Utah  {.unnumbered} 
+This dissertation demonstrates how to integrate **Spatial Capabilities Theory** with **Integrated Nested Laplace Approximation (INLA)** methodology to analyze place-based factors affecting criminal justice outcomes. This dissertation shows how advanced Bayesian spatial methods can translate theoretical insights about capability formation into empirical analysis that translate to evidence-based policy tools.
 
-## Tutorial Sections
+- 👩🏻‍💻 See the latest presentation for this dissertation: [UDC Presentation](https://syoongov-udc-presentation.share.connect.posit.cloud/) (expect a few min load time)
+
+## Dissertation Sections
 
 ::: {.grid}
 
-::: {.g-col-6}
+::: {.g-col-4}
+### 📖 Background & Literature Review
+Introduction & Theoretical Framework:
+
+- **[Abstract](abstract.qmd)** - Abstract
+- **[Intro](intro.qmd)** - Introduction
+- **[Theory](theory.qmd)** - Theoretical Background
+:::
+
+::: {.g-col-4}
 ### 📊 Methodology
 Complete workflow from data preparation through spatial modeling:
 
-- **[Data Preparation](data-preparation.qmd)** - Cleaning and integration
+- **[Data Preparation](data-preparation.qmd)** - Cleaning and integration framework
 - **[Variable Selection](variable-selection.qmd)** - Bayesian Model Averaging  
 - **[Spatial Modeling](spatial-modeling.qmd)** - INLA-BYM2 implementation
 - **[Model Validation](model-validation.qmd)** - Diagnostics and testing
 :::
 
-::: {.g-col-6}
+::: {.g-col-4}
 ### 🎯 Applications
 Analysis results and policy translation:
 
-- **[Results](results.qmd)** - Key findings and spatial patterns
+- **[Results](results_2.qmd)** - Key findings and spatial patterns
 - **[Policy Applications](policy.qmd)** - Evidence-based recommendations
-- **[About](about.qmd)** - Background and context
+- **[Conclusion](conclusion.qmd)** - Background and context
 :::
 
 :::

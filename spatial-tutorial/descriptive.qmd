@@ -1,0 +1,51 @@
+---
+title: "Descriptive Data"
+format: bookup-html
+---
+
+```{r setup, include=FALSE}
+# Load required libraries
+library(leaflet)
+library(tidyverse)
+library(viridis)
+library(ggplot2)
+library(dplyr)
+library(plotly)
+library(sf)
+
+```
+
+```{r data-import, include=FALSE}
+# Import spatial data
+library(sf)
+model_data_hpi <- st_read("data/model_data_hpi.shp")
+```
+
+
+# Spatial Distribution of Utah's Correctional Population
+
+```{r spatial, echo=FALSE}
+# Assuming model_data_hpi is your dataset
+leaflet(model_data_hpi) %>%
+  addTiles() %>%
+  addPolygons(
+    fillColor = ~colorQuantile("YlOrRd", corr_rt)(corr_rt),
+    fillOpacity = 0.7,
+    weight = 1,
+    color = "#FFFFFF",
+    popup = ~paste(
+      "<strong>Tract:</strong>", NAM, "<br>",
+      "<strong>Rate:</strong>", round(corr_rt, 2), "<br>",
+      "<strong>Hispanic:</strong>", round(phisp, 2), "<br>",
+      "<strong>Unemployment:</strong>", round(punemp, 2)
+    )
+  ) %>%
+  addLegend(
+    position = "bottomright",
+    pal = colorQuantile("YlOrRd", model_data_hpi$corr_rt),
+    values = model_data_hpi$corr_rt,
+    title = "Correctional Population Rate </br>per 1000 individuals"
+  )
+```
+
+

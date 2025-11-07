@@ -10,22 +10,35 @@ website:
     left:
       - href: index.qmd
         text: Home
+      - text: "About"
+        menu:
+          - href: abstract.qmd
+            text: "Abstract"
+          - href: intro.qmd
+            text: "Introduction"
+          - href: theory.qmd
+            text: "Theoretical Foundation"
       - text: "Methodology"
         menu:
+          - href: methodology.qmd
+            text: "Theory to Method"
           - href: data-preparation.qmd
             text: "Data Preparation"
+          - href: descriptive.qmd
+            text: "Descriptive Data" 
           - href: variable-selection.qmd  
             text: "Variable Selection (BMA)"
           - href: spatial-modeling.qmd
             text: "Spatial Modeling (INLA)"
           - href: model-validation.qmd
             text: "Model Validation"
-      - href: results.qmd
+      - href: results_2.qmd
         text: "Results"
       - href: policy.qmd
         text: "Policy Applications"
-      - href: about.qmd
-        text: "About"
+      - href: conclusion.qmd
+        text: "Conclusion"
+
 
 # Keep your existing format but add more options
 format:
@@ -37,12 +50,16 @@ format:
     code-fold: true
     code-tools: true
     code-link: true
-    fig-width: 10
-    fig-height: 6
+    fig-width: 12
+    fig-height: 8
     fig-dpi: 300
     embed-resources: false
     smooth-scroll: true
     link-external-newwindow: true
+    citations-hover: true
+    footnotes-hover: true
+    bibliography: references.bib
+
 
 execute:
   warning: false

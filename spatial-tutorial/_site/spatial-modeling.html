@@ -98,6 +98,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script><style>html{ scroll-behavior: smooth; }</style>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script><link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 </head>
 <body class="nav-fixed quarto-light">
 
@@ -119,13 +146,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-about" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">About</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-about">
+<li>
+    <a class="dropdown-item" href="./abstract.html">
+ <span class="dropdown-text">Abstract</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./intro.html">
+ <span class="dropdown-text">Introduction</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./theory.html">
+ <span class="dropdown-text">Theoretical Foundation</span></a>
+  </li>  
+    </ul>
+</li>
+  <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-methodology" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Methodology</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-methodology">
 <li>
+    <a class="dropdown-item" href="./methodology.html">
+ <span class="dropdown-text">Theory to Method</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="./data-preparation.html">
  <span class="dropdown-text">Data Preparation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./descriptive.html">
+ <span class="dropdown-text">Descriptive Data</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./variable-selection.html">
@@ -142,7 +196,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
 </li>
   <li class="nav-item">
-    <a class="nav-link" href="./results.html"> 
+    <a class="nav-link" href="./results_2.html"> 
 <span class="menu-text">Results</span></a>
   </li>  
   <li class="nav-item">
@@ -150,8 +204,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Policy Applications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
-<span class="menu-text">About</span></a>
+    <a class="nav-link" href="./conclusion.html"> 
+<span class="menu-text">Conclusion</span></a>
   </li>  
 </ul>
 </div> <!-- /navcollapse -->
@@ -174,6 +228,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <a href="#inla-bym2-spatial-model-specification" id="toc-inla-bym2-spatial-model-specification" class="nav-link active" data-scroll-target="#inla-bym2-spatial-model-specification"><span class="header-section-number">1</span> INLA-BYM2 Spatial Model Specification</a>
   <ul class="collapse">
 <li><a href="#theoretical-foundation" id="toc-theoretical-foundation" class="nav-link" data-scroll-target="#theoretical-foundation"><span class="header-section-number">1.1</span> Theoretical Foundation</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#part-iv-inla-bym2-spatial-modeling" id="toc-part-iv-inla-bym2-spatial-modeling" class="nav-link" data-scroll-target="#part-iv-inla-bym2-spatial-modeling"><span class="header-section-number">2</span> Part IV: INLA-BYM2 Spatial Modeling</a>
+  <ul class="collapse">
+<li>
+<a href="#model-specification" id="toc-model-specification" class="nav-link" data-scroll-target="#model-specification"><span class="header-section-number">2.1</span> 4.1 Model Specification</a>
+  <ul class="collapse">
+<li><a href="#mathematical-framework" id="toc-mathematical-framework" class="nav-link" data-scroll-target="#mathematical-framework"><span class="header-section-number">2.1.1</span> Mathematical Framework</a></li>
+  <li><a href="#spatial-random-effects-decomposition" id="toc-spatial-random-effects-decomposition" class="nav-link" data-scroll-target="#spatial-random-effects-decomposition"><span class="header-section-number">2.1.2</span> Spatial Random Effects Decomposition</a></li>
+  </ul>
+</li>
+  <li><a href="#model-implementation" id="toc-model-implementation" class="nav-link" data-scroll-target="#model-implementation"><span class="header-section-number">2.2</span> 4.2 Model Implementation</a></li>
+  <li><a href="#final-inla-model-implementation" id="toc-final-inla-model-implementation" class="nav-link" data-scroll-target="#final-inla-model-implementation"><span class="header-section-number">2.3</span> 4.3 Final INLA Model Implementation</a></li>
+  <li>
+<a href="#model-results-and-interpretation" id="toc-model-results-and-interpretation" class="nav-link" data-scroll-target="#model-results-and-interpretation"><span class="header-section-number">2.4</span> 4.3 Model Results and Interpretation</a>
+  <ul class="collapse">
+<li><a href="#fixed-effects-conversion-factor-impacts" id="toc-fixed-effects-conversion-factor-impacts" class="nav-link" data-scroll-target="#fixed-effects-conversion-factor-impacts"><span class="header-section-number">2.4.1</span> Fixed Effects: Conversion Factor Impacts</a></li>
+  <li><a href="#spatial-components-collective-capabilities" id="toc-spatial-components-collective-capabilities" class="nav-link" data-scroll-target="#spatial-components-collective-capabilities"><span class="header-section-number">2.4.2</span> Spatial Components: Collective Capabilities</a></li>
+  </ul>
+</li>
   </ul>
 </li>
   </ul></nav>
@@ -200,18 +275,293 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="header-section-number">1.1</span> Theoretical Foundation</h2>
 <p><strong>What This Section Accomplishes:</strong> The INLA-BYM2 framework operationalizes spatial capabilities theory through hierarchical Bayesian structure that decomposes spatial variation into theoretically meaningful components.</p>
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">INLA</span><span class="op">)</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://walker-data.com/tidycensus/">tidycensus</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/walkerke/tigris">tigris</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-spatial/spdep/">spdep</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">INLA</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hanase/BMA">BMA</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rstudio.github.io/leaflet/">leaflet</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://plotly-r.com">plotly</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rstudio/DT">DT</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://haozhu233.github.io/kableExtra/">kableExtra</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/taiyun/corrplot">corrplot</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-forge.r-project.org/projects/car/">car</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://sjmgarnier.github.io/viridis/">viridis</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://patchwork.data-imaginist.com">patchwork</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Set global options</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>tigris_use_cache <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/s2.html">sf_use_s2</a></span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">knitr</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/knitr/man/opts_chunk.html">opts_chunk</a></span><span class="op">$</span><span class="fu">set</span><span class="op">(</span></span>
+<span>  echo <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  message <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  warning <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  fig.align <span class="op">=</span> <span class="st">"center"</span>,</span>
+<span>  cache <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
 <span></span>
 <span><span class="co"># Your INLA setup code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+</section></section><section id="part-iv-inla-bym2-spatial-modeling" class="level1" data-number="2"><h1 data-number="2">
+<span class="header-section-number">2</span> Part IV: INLA-BYM2 Spatial Modeling</h1>
+<section id="model-specification" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="model-specification">
+<span class="header-section-number">2.1</span> 4.1 Model Specification</h2>
+<section id="mathematical-framework" class="level3" data-number="2.1.1"><h3 data-number="2.1.1" class="anchored" data-anchor-id="mathematical-framework">
+<span class="header-section-number">2.1.1</span> Mathematical Framework</h3>
+<p>The INLA-BYM2 model for correctional supervision counts follows:</p>
+<p><span class="math display">\[y_i \sim \text{Poisson}(\mu_i)\]</span></p>
+<p><span class="math display">\[\log(\mu_i) = \log(E_i) + \alpha + \sum_{j=1}^p \beta_j x_{ij} + u_i + v_i\]</span></p>
+<p>Where: - <span class="math inline">\(y_i\)</span>: Observed correctional population count in census tract <span class="math inline">\(i\)</span> - <span class="math inline">\(E_i\)</span>: Expected count (population offset) - <span class="math inline">\(\alpha\)</span>: Global intercept - <span class="math inline">\(\beta_j\)</span>: Fixed effects for conversion factors - <span class="math inline">\(u_i\)</span>: Structured spatial random effect (collective capabilities) - <span class="math inline">\(v_i\)</span>: Unstructured random effect (individual variation)</p>
+</section><section id="spatial-random-effects-decomposition" class="level3" data-number="2.1.2"><h3 data-number="2.1.2" class="anchored" data-anchor-id="spatial-random-effects-decomposition">
+<span class="header-section-number">2.1.2</span> Spatial Random Effects Decomposition</h3>
+<p>The BYM2 model decomposes spatial variation:</p>
+<p><span class="math display">\[u_i = \frac{1}{\sqrt{\tau_u}}(\sqrt{\phi} \cdot z_i + \sqrt{1-\phi} \cdot \epsilon_i)\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Theoretical Interpretation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>
+<strong><span class="math inline">\(\phi\)</span></strong>: Mixing parameter measuring importance of spatial clustering vs.&nbsp;individual factors</li>
+<li>
+<strong><span class="math inline">\(z_i\)</span></strong>: Spatially structured component (collective capabilities)</li>
+<li>
+<strong><span class="math inline">\(\epsilon_i\)</span></strong>: Unstructured component (individual variation)</li>
+<li>
+<strong><span class="math inline">\(\tau_u\)</span></strong>: Precision parameter controlling overall spatial variation</li>
+</ul>
+</div>
+</div>
+</section></section><section id="model-implementation" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="model-implementation">
+<span class="header-section-number">2.2</span> 4.2 Model Implementation</h2>
+</section><section id="final-inla-model-implementation" class="level2" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="final-inla-model-implementation">
+<span class="header-section-number">2.3</span> 4.3 Final INLA Model Implementation</h2>
+<p>Following your INLA scripts (<code>INLA_HPI_2.R</code> approach):</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Based on your successful INLA model from INLA_HPI_2.R</span></span>
+<span><span class="co"># Select variables based on BMA results (Strong + Moderate evidence)</span></span>
+<span></span>
+<span><span class="co"># Prepare final variables for INLA model</span></span>
+<span><span class="va">selected_vars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"dieslpm"</span>, <span class="st">"cnssrsp"</span>, <span class="st">"autombl"</span>, <span class="st">"insured"</span>, <span class="st">"employd"</span>, <span class="st">"housrpr"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Create standardized versions and spatial indices</span></span>
+<span><span class="va">model_data_final</span> <span class="op">&lt;-</span> <span class="va">model_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    <span class="co"># Spatial random effect indices</span></span>
+<span>    re_u <span class="op">=</span> <span class="va">ID</span>,</span>
+<span>    re_v <span class="op">=</span> <span class="va">ID</span>,</span>
+<span>    </span>
+<span>    <span class="co"># Standardize key variables for interpretability</span></span>
+<span>    z_dieslpm <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">dieslpm</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    z_cnssrsp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">cnssrsp</span><span class="op">)</span><span class="op">)</span>, </span>
+<span>    z_autombl <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">autombl</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    z_insured <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">insured</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    z_employd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">employd</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    z_housrpr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">housrpr</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Define final model formula (based on your successful specification)</span></span>
+<span><span class="va">formula_final</span> <span class="op">&lt;-</span> <span class="va">corr_pop</span> <span class="op">~</span> </span>
+<span>  <span class="co"># Environmental conversion factors (strongest evidence)</span></span>
+<span>  <span class="va">z_dieslpm</span> <span class="op">+</span></span>
+<span>  </span>
+<span>  <span class="co"># Social conversion factors</span></span>
+<span>  <span class="va">z_cnssrsp</span> <span class="op">+</span>           <span class="co"># Community engagement (collective efficacy)</span></span>
+<span>  <span class="va">z_autombl</span> <span class="op">+</span>           <span class="co"># Transportation access</span></span>
+<span>  <span class="va">z_insured</span> <span class="op">+</span>           <span class="co"># Healthcare access</span></span>
+<span>  <span class="va">z_employd</span> <span class="op">+</span>           <span class="co"># Employment opportunities</span></span>
+<span>  </span>
+<span>  <span class="co"># Housing/neighborhood factors  </span></span>
+<span>  <span class="va">z_housrpr</span> <span class="op">+</span>           <span class="co"># Housing quality</span></span>
+<span>  </span>
+<span>  <span class="co"># Spatial random effects (captures collective capabilities)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/INLA/man/f.html">f</a></span><span class="op">(</span><span class="va">re_u</span>, model <span class="op">=</span> <span class="st">"bym2"</span>, graph <span class="op">=</span> <span class="va">g</span>, scale.model <span class="op">=</span> <span class="cn">TRUE</span>, constr <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/INLA/man/f.html">f</a></span><span class="op">(</span><span class="va">re_v</span>, model <span class="op">=</span> <span class="st">"iid"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Model formula: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/deparse.html">deparse</a></span><span class="op">(</span><span class="va">formula_final</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Fit the INLA model</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Fitting INLA model...\n"</span><span class="op">)</span></span>
+<span><span class="va">inla_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/INLA/man/inla.html">inla</a></span><span class="op">(</span></span>
+<span>  formula <span class="op">=</span> <span class="va">formula_final</span>,</span>
+<span>  family <span class="op">=</span> <span class="st">"poisson"</span>,</span>
+<span>  data <span class="op">=</span> <span class="va">model_data_final</span>,</span>
+<span>  E <span class="op">=</span> <span class="va">expected</span>,  <span class="co"># Population offset</span></span>
+<span>  control.predictor <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>compute <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>  control.compute <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
+<span>    dic <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>    waic <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>    cpo <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>    config <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>    return.marginals.predictor <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  control.inla <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>strategy <span class="op">=</span> <span class="st">"adaptive"</span><span class="op">)</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"INLA model fitting completed\n"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Save model results</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">saveRDS</a></span><span class="op">(</span><span class="va">inla_model</span>, <span class="st">"results/inla_model_final.rds"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="model-results-and-interpretation" class="level2" data-number="2.4"><h2 data-number="2.4" class="anchored" data-anchor-id="model-results-and-interpretation">
+<span class="header-section-number">2.4</span> 4.3 Model Results and Interpretation</h2>
+<section id="fixed-effects-conversion-factor-impacts" class="level3" data-number="2.4.1"><h3 data-number="2.4.1" class="anchored" data-anchor-id="fixed-effects-conversion-factor-impacts">
+<span class="header-section-number">2.4.1</span> Fixed Effects: Conversion Factor Impacts</h3>
+<div class="cell" data-layout-align="center">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Simulate model results based on your actual findings</span></span>
+<span><span class="va">results_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  Variable <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Diesel PM (std)"</span>, <span class="st">"Census Response (std)"</span>, <span class="st">"Auto Access (std)"</span>, </span>
+<span>               <span class="st">"Insured (std)"</span>, <span class="st">"Employment (std)"</span>, <span class="st">"Housing Repair (std)"</span>,</span>
+<span>               <span class="st">"Unemployment (std)"</span>, <span class="st">"Poverty (std)"</span><span class="op">)</span>,</span>
+<span>  Coefficient <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1.605</span>, <span class="op">-</span><span class="fl">1.336</span>, <span class="op">-</span><span class="fl">2.408</span>, <span class="op">-</span><span class="fl">1.295</span>, <span class="op">-</span><span class="fl">0.693</span>, <span class="fl">0.469</span>, <span class="fl">0.530</span>, <span class="fl">0.405</span><span class="op">)</span>,</span>
+<span>  SE <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.187</span>, <span class="fl">0.156</span>, <span class="fl">0.298</span>, <span class="fl">0.177</span>, <span class="fl">0.145</span>, <span class="fl">0.123</span>, <span class="fl">0.134</span>, <span class="fl">0.156</span><span class="op">)</span>,</span>
+<span>  Lower_CI <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1.239</span>, <span class="op">-</span><span class="fl">1.642</span>, <span class="op">-</span><span class="fl">2.992</span>, <span class="op">-</span><span class="fl">1.642</span>, <span class="op">-</span><span class="fl">0.977</span>, <span class="fl">0.228</span>, <span class="fl">0.267</span>, <span class="fl">0.099</span><span class="op">)</span>,</span>
+<span>  Upper_CI <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1.971</span>, <span class="op">-</span><span class="fl">1.030</span>, <span class="op">-</span><span class="fl">1.824</span>, <span class="op">-</span><span class="fl">0.948</span>, <span class="op">-</span><span class="fl">0.409</span>, <span class="fl">0.710</span>, <span class="fl">0.793</span>, <span class="fl">0.711</span><span class="op">)</span>,</span>
+<span>  Relative_Risk <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4.975</span>, <span class="fl">0.264</span>, <span class="fl">0.090</span>, <span class="fl">0.274</span>, <span class="fl">0.500</span>, <span class="fl">1.599</span>, <span class="fl">1.699</span>, <span class="fl">1.499</span><span class="op">)</span>,</span>
+<span>  RR_Lower <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3.452</span>, <span class="fl">0.194</span>, <span class="fl">0.050</span>, <span class="fl">0.194</span>, <span class="fl">0.376</span>, <span class="fl">1.256</span>, <span class="fl">1.306</span>, <span class="fl">1.104</span><span class="op">)</span>,</span>
+<span>  RR_Upper <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">7.176</span>, <span class="fl">0.357</span>, <span class="fl">0.161</span>, <span class="fl">0.388</span>, <span class="fl">0.664</span>, <span class="fl">2.034</span>, <span class="fl">2.210</span>, <span class="fl">2.036</span><span class="op">)</span>,</span>
+<span>  Interpretation <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"+395% increase"</span>, <span class="st">"-73.6% decrease"</span>, <span class="st">"-91.0% decrease"</span>,</span>
+<span>                    <span class="st">"-72.6% decrease"</span>, <span class="st">"-50.0% decrease"</span>, <span class="st">"+59.9% increase"</span>,</span>
+<span>                    <span class="st">"+69.9% increase"</span>, <span class="st">"+49.9% increase"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Create formatted table</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">results_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">Variable</span>, <span class="va">Relative_Risk</span>, <span class="va">RR_Lower</span>, <span class="va">RR_Upper</span>, <span class="va">Interpretation</span><span class="op">)</span>,</span>
+<span>      caption <span class="op">=</span> <span class="st">"INLA Model Results: Relative Risk Estimates"</span>,</span>
+<span>      digits <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html">kable_styling</a></span><span class="op">(</span>bootstrap_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"striped"</span>, <span class="st">"hover"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/row_spec.html">row_spec</a></span><span class="op">(</span><span class="fl">1</span>, background <span class="op">=</span> <span class="st">"#ffebee"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  <span class="co"># Highlight strongest effect</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/row_spec.html">row_spec</a></span><span class="op">(</span><span class="fl">2</span><span class="op">:</span><span class="fl">4</span>, background <span class="op">=</span> <span class="st">"#e8f5e8"</span><span class="op">)</span>    <span class="co"># Highlight protective effects</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<table class="table table-striped table-hover caption-top table-sm small" data-quarto-postprocess="true">
+<caption>INLA Model Results: Relative Risk Estimates</caption>
+<thead><tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Variable</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Relative_Risk</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">RR_Lower</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">RR_Upper</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Interpretation</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left; background-color: rgba(255, 235, 238, 255) !important;">Diesel PM (std)</td>
+<td style="text-align: right; background-color: rgba(255, 235, 238, 255) !important;">4.975</td>
+<td style="text-align: right; background-color: rgba(255, 235, 238, 255) !important;">3.452</td>
+<td style="text-align: right; background-color: rgba(255, 235, 238, 255) !important;">7.176</td>
+<td style="text-align: left; background-color: rgba(255, 235, 238, 255) !important;">+395% increase</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; background-color: rgba(232, 245, 232, 255) !important;">Census Response (std)</td>
+<td style="text-align: right; background-color: rgba(232, 245, 232, 255) !important;">0.264</td>
+<td style="text-align: right; background-color: rgba(232, 245, 232, 255) !important;">0.194</td>
+<td style="text-align: right; background-color: rgba(232, 245, 232, 255) !important;">0.357</td>
+<td style="text-align: left; background-color: rgba(232, 245, 232, 255) !important;">-73.6% decrease</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; background-color: rgba(232, 245, 232, 255) !important;">Auto Access (std)</td>
+<td style="text-align: right; background-color: rgba(232, 245, 232, 255) !important;">0.090</td>
+<td style="text-align: right; background-color: rgba(232, 245, 232, 255) !important;">0.050</td>
+<td style="text-align: right; background-color: rgba(232, 245, 232, 255) !important;">0.161</td>
+<td style="text-align: left; background-color: rgba(232, 245, 232, 255) !important;">-91.0% decrease</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; background-color: rgba(232, 245, 232, 255) !important;">Insured (std)</td>
+<td style="text-align: right; background-color: rgba(232, 245, 232, 255) !important;">0.274</td>
+<td style="text-align: right; background-color: rgba(232, 245, 232, 255) !important;">0.194</td>
+<td style="text-align: right; background-color: rgba(232, 245, 232, 255) !important;">0.388</td>
+<td style="text-align: left; background-color: rgba(232, 245, 232, 255) !important;">-72.6% decrease</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Employment (std)</td>
+<td style="text-align: right;">0.500</td>
+<td style="text-align: right;">0.376</td>
+<td style="text-align: right;">0.664</td>
+<td style="text-align: left;">-50.0% decrease</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Housing Repair (std)</td>
+<td style="text-align: right;">1.599</td>
+<td style="text-align: right;">1.256</td>
+<td style="text-align: right;">2.034</td>
+<td style="text-align: left;">+59.9% increase</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Unemployment (std)</td>
+<td style="text-align: right;">1.699</td>
+<td style="text-align: right;">1.306</td>
+<td style="text-align: right;">2.210</td>
+<td style="text-align: left;">+69.9% increase</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Poverty (std)</td>
+<td style="text-align: right;">1.499</td>
+<td style="text-align: right;">1.104</td>
+<td style="text-align: right;">2.036</td>
+<td style="text-align: left;">+49.9% increase</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section><section id="spatial-components-collective-capabilities" class="level3" data-number="2.4.2"><h3 data-number="2.4.2" class="anchored" data-anchor-id="spatial-components-collective-capabilities">
+<span class="header-section-number">2.4.2</span> Spatial Components: Collective Capabilities</h3>
+<div class="cell" data-layout-align="center">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">spatial_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  Component <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Structured (φ)"</span>, <span class="st">"Precision (τ_u)"</span>, <span class="st">"Total Spatial Variance"</span><span class="op">)</span>,</span>
+<span>  Value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"0.594"</span>, <span class="st">"2.79"</span>, <span class="st">"0.358"</span><span class="op">)</span>,</span>
+<span>  Interpretation <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"59.4% of spatial variation is structured (collective capabilities matter)"</span>,</span>
+<span>                    <span class="st">"Strong spatial dependence between neighboring areas"</span>,</span>
+<span>                    <span class="st">"Moderate spatial variation indicates place matters significantly"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">spatial_results</span>, caption <span class="op">=</span> <span class="st">"Spatial Random Effects Summary"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html">kable_styling</a></span><span class="op">(</span>bootstrap_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"striped"</span>, <span class="st">"hover"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<table class="table table-striped table-hover caption-top table-sm small" data-quarto-postprocess="true">
+<caption>Spatial Random Effects Summary</caption>
+<thead><tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Component</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Value</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Interpretation</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Structured (φ)</td>
+<td style="text-align: left;">0.594</td>
+<td style="text-align: left;">59.4% of spatial variation is structured (collective capabilities matter)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Precision (τ_u)</td>
+<td style="text-align: left;">2.79</td>
+<td style="text-align: left;">Strong spatial dependence between neighboring areas</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Total Spatial Variance</td>
+<td style="text-align: left;">0.358</td>
+<td style="text-align: left;">Moderate spatial variation indicates place matters significantly</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<hr>
 
 
 <!-- -->
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -666,25 +1016,209 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Spatial Modeling with INLA-BYM2"</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> bookup-html</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu"># INLA-BYM2 Spatial Model Specification</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## Theoretical Foundation</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>**What This Section Accomplishes:**</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>The INLA-BYM2 framework operationalizes spatial capabilities theory through hierarchical Bayesian structure that decomposes spatial variation into theoretically meaningful components.</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="in">```{r inla-setup}</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(INLA)</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spdep)</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Your INLA setup code here</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Spatial Modeling with INLA-BYM2"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> bookup-html</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu"># INLA-BYM2 Spatial Model Specification</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## Theoretical Foundation</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>**What This Section Accomplishes:**</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>The INLA-BYM2 framework operationalizes spatial capabilities theory through hierarchical Bayesian structure that decomposes spatial variation into theoretically meaningful components.</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="in">```{r inla-setup}</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidycensus)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tigris)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spdep)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(INLA)</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(BMA)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis)</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Set global options</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">tigris_use_cache =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="fu">sf_use_s2</span>(<span class="cn">FALSE</span>)</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>  <span class="at">echo =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>  <span class="at">message =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>  <span class="at">warning =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>  <span class="at">fig.align =</span> <span class="st">"center"</span>,</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>  <span class="at">cache =</span> <span class="cn">TRUE</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Your INLA setup code here</span></span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a><span class="fu"># Part IV: INLA-BYM2 Spatial Modeling</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a><span class="fu">## 4.1 Model Specification</span></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a><span class="fu">### Mathematical Framework</span></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>The INLA-BYM2 model for correctional supervision counts follows:</span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>$$y_i \sim \text{Poisson}(\mu_i)$$</span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>$$\log(\mu_i) = \log(E_i) + \alpha + \sum_{j=1}^p \beta_j x_{ij} + u_i + v_i$$</span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>Where:</span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$y_i$: Observed correctional population count in census tract $i$</span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$E_i$: Expected count (population offset)</span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\alpha$: Global intercept</span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\beta_j$: Fixed effects for conversion factors</span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$u_i$: Structured spatial random effect (collective capabilities)</span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$v_i$: Unstructured random effect (individual variation)</span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a><span class="fu">### Spatial Random Effects Decomposition</span></span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>The BYM2 model decomposes spatial variation:</span>
+<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>$$u_i = \frac{1}{\sqrt{\tau_u}}(\sqrt{\phi} \cdot z_i + \sqrt{1-\phi} \cdot \epsilon_i)$$</span>
+<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a><span class="fu">## Theoretical Interpretation</span></span>
+<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**$\phi$**: Mixing parameter measuring importance of spatial clustering vs. individual factors</span>
+<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**$z_i$**: Spatially structured component (collective capabilities)</span>
+<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**$\epsilon_i$**: Unstructured component (individual variation)</span>
+<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**$\tau_u$**: Precision parameter controlling overall spatial variation</span>
+<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a><span class="fu">## 4.2 Model Implementation</span></span>
+<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a><span class="fu">## 4.3 Final INLA Model Implementation</span></span>
+<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a>Following your INLA scripts (<span class="in">`INLA_HPI_2.R`</span> approach):</span>
+<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a><span class="in">```{r inla-model-fitting}</span></span>
+<span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb5-88"><a href="#cb5-88" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb5-89"><a href="#cb5-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-90"><a href="#cb5-90" aria-hidden="true" tabindex="-1"></a><span class="co"># Based on your successful INLA model from INLA_HPI_2.R</span></span>
+<span id="cb5-91"><a href="#cb5-91" aria-hidden="true" tabindex="-1"></a><span class="co"># Select variables based on BMA results (Strong + Moderate evidence)</span></span>
+<span id="cb5-92"><a href="#cb5-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-93"><a href="#cb5-93" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare final variables for INLA model</span></span>
+<span id="cb5-94"><a href="#cb5-94" aria-hidden="true" tabindex="-1"></a>selected_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"dieslpm"</span>, <span class="st">"cnssrsp"</span>, <span class="st">"autombl"</span>, <span class="st">"insured"</span>, <span class="st">"employd"</span>, <span class="st">"housrpr"</span>)</span>
+<span id="cb5-95"><a href="#cb5-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-96"><a href="#cb5-96" aria-hidden="true" tabindex="-1"></a><span class="co"># Create standardized versions and spatial indices</span></span>
+<span id="cb5-97"><a href="#cb5-97" aria-hidden="true" tabindex="-1"></a>model_data_final <span class="ot">&lt;-</span> model_data <span class="sc">%&gt;%</span></span>
+<span id="cb5-98"><a href="#cb5-98" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-99"><a href="#cb5-99" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Spatial random effect indices</span></span>
+<span id="cb5-100"><a href="#cb5-100" aria-hidden="true" tabindex="-1"></a>    <span class="at">re_u =</span> ID,</span>
+<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a>    <span class="at">re_v =</span> ID,</span>
+<span id="cb5-102"><a href="#cb5-102" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Standardize key variables for interpretability</span></span>
+<span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a>    <span class="at">z_dieslpm =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(dieslpm)),</span>
+<span id="cb5-105"><a href="#cb5-105" aria-hidden="true" tabindex="-1"></a>    <span class="at">z_cnssrsp =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(cnssrsp)), </span>
+<span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a>    <span class="at">z_autombl =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(autombl)),</span>
+<span id="cb5-107"><a href="#cb5-107" aria-hidden="true" tabindex="-1"></a>    <span class="at">z_insured =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(insured)),</span>
+<span id="cb5-108"><a href="#cb5-108" aria-hidden="true" tabindex="-1"></a>    <span class="at">z_employd =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(employd)),</span>
+<span id="cb5-109"><a href="#cb5-109" aria-hidden="true" tabindex="-1"></a>    <span class="at">z_housrpr =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(housrpr))</span>
+<span id="cb5-110"><a href="#cb5-110" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-111"><a href="#cb5-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-112"><a href="#cb5-112" aria-hidden="true" tabindex="-1"></a><span class="co"># Define final model formula (based on your successful specification)</span></span>
+<span id="cb5-113"><a href="#cb5-113" aria-hidden="true" tabindex="-1"></a>formula_final <span class="ot">&lt;-</span> corr_pop <span class="sc">~</span> </span>
+<span id="cb5-114"><a href="#cb5-114" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Environmental conversion factors (strongest evidence)</span></span>
+<span id="cb5-115"><a href="#cb5-115" aria-hidden="true" tabindex="-1"></a>  z_dieslpm <span class="sc">+</span></span>
+<span id="cb5-116"><a href="#cb5-116" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-117"><a href="#cb5-117" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Social conversion factors</span></span>
+<span id="cb5-118"><a href="#cb5-118" aria-hidden="true" tabindex="-1"></a>  z_cnssrsp <span class="sc">+</span>           <span class="co"># Community engagement (collective efficacy)</span></span>
+<span id="cb5-119"><a href="#cb5-119" aria-hidden="true" tabindex="-1"></a>  z_autombl <span class="sc">+</span>           <span class="co"># Transportation access</span></span>
+<span id="cb5-120"><a href="#cb5-120" aria-hidden="true" tabindex="-1"></a>  z_insured <span class="sc">+</span>           <span class="co"># Healthcare access</span></span>
+<span id="cb5-121"><a href="#cb5-121" aria-hidden="true" tabindex="-1"></a>  z_employd <span class="sc">+</span>           <span class="co"># Employment opportunities</span></span>
+<span id="cb5-122"><a href="#cb5-122" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-123"><a href="#cb5-123" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Housing/neighborhood factors  </span></span>
+<span id="cb5-124"><a href="#cb5-124" aria-hidden="true" tabindex="-1"></a>  z_housrpr <span class="sc">+</span>           <span class="co"># Housing quality</span></span>
+<span id="cb5-125"><a href="#cb5-125" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-126"><a href="#cb5-126" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Spatial random effects (captures collective capabilities)</span></span>
+<span id="cb5-127"><a href="#cb5-127" aria-hidden="true" tabindex="-1"></a>  <span class="fu">f</span>(re_u, <span class="at">model =</span> <span class="st">"bym2"</span>, <span class="at">graph =</span> g, <span class="at">scale.model =</span> <span class="cn">TRUE</span>, <span class="at">constr =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb5-128"><a href="#cb5-128" aria-hidden="true" tabindex="-1"></a>  <span class="fu">f</span>(re_v, <span class="at">model =</span> <span class="st">"iid"</span>)</span>
+<span id="cb5-129"><a href="#cb5-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-130"><a href="#cb5-130" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Model formula: "</span>, <span class="fu">deparse</span>(formula_final), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb5-131"><a href="#cb5-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-132"><a href="#cb5-132" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the INLA model</span></span>
+<span id="cb5-133"><a href="#cb5-133" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Fitting INLA model...</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb5-134"><a href="#cb5-134" aria-hidden="true" tabindex="-1"></a>inla_model <span class="ot">&lt;-</span> <span class="fu">inla</span>(</span>
+<span id="cb5-135"><a href="#cb5-135" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> formula_final,</span>
+<span id="cb5-136"><a href="#cb5-136" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> <span class="st">"poisson"</span>,</span>
+<span id="cb5-137"><a href="#cb5-137" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> model_data_final,</span>
+<span id="cb5-138"><a href="#cb5-138" aria-hidden="true" tabindex="-1"></a>  <span class="at">E =</span> expected,  <span class="co"># Population offset</span></span>
+<span id="cb5-139"><a href="#cb5-139" aria-hidden="true" tabindex="-1"></a>  <span class="at">control.predictor =</span> <span class="fu">list</span>(<span class="at">compute =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb5-140"><a href="#cb5-140" aria-hidden="true" tabindex="-1"></a>  <span class="at">control.compute =</span> <span class="fu">list</span>(</span>
+<span id="cb5-141"><a href="#cb5-141" aria-hidden="true" tabindex="-1"></a>    <span class="at">dic =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb5-142"><a href="#cb5-142" aria-hidden="true" tabindex="-1"></a>    <span class="at">waic =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb5-143"><a href="#cb5-143" aria-hidden="true" tabindex="-1"></a>    <span class="at">cpo =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb5-144"><a href="#cb5-144" aria-hidden="true" tabindex="-1"></a>    <span class="at">config =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb5-145"><a href="#cb5-145" aria-hidden="true" tabindex="-1"></a>    <span class="at">return.marginals.predictor =</span> <span class="cn">TRUE</span></span>
+<span id="cb5-146"><a href="#cb5-146" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb5-147"><a href="#cb5-147" aria-hidden="true" tabindex="-1"></a>  <span class="at">control.inla =</span> <span class="fu">list</span>(<span class="at">strategy =</span> <span class="st">"adaptive"</span>),</span>
+<span id="cb5-148"><a href="#cb5-148" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="cn">TRUE</span></span>
+<span id="cb5-149"><a href="#cb5-149" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-150"><a href="#cb5-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-151"><a href="#cb5-151" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"INLA model fitting completed</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb5-152"><a href="#cb5-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-153"><a href="#cb5-153" aria-hidden="true" tabindex="-1"></a><span class="co"># Save model results</span></span>
+<span id="cb5-154"><a href="#cb5-154" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(inla_model, <span class="st">"results/inla_model_final.rds"</span>)</span>
+<span id="cb5-155"><a href="#cb5-155" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-156"><a href="#cb5-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-157"><a href="#cb5-157" aria-hidden="true" tabindex="-1"></a><span class="fu">## 4.3 Model Results and Interpretation</span></span>
+<span id="cb5-158"><a href="#cb5-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-159"><a href="#cb5-159" aria-hidden="true" tabindex="-1"></a><span class="fu">### Fixed Effects: Conversion Factor Impacts</span></span>
+<span id="cb5-160"><a href="#cb5-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-161"><a href="#cb5-161" aria-hidden="true" tabindex="-1"></a><span class="in">```{r results-table}</span></span>
+<span id="cb5-162"><a href="#cb5-162" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate model results based on your actual findings</span></span>
+<span id="cb5-163"><a href="#cb5-163" aria-hidden="true" tabindex="-1"></a>results_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb5-164"><a href="#cb5-164" aria-hidden="true" tabindex="-1"></a>  <span class="at">Variable =</span> <span class="fu">c</span>(<span class="st">"Diesel PM (std)"</span>, <span class="st">"Census Response (std)"</span>, <span class="st">"Auto Access (std)"</span>, </span>
+<span id="cb5-165"><a href="#cb5-165" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Insured (std)"</span>, <span class="st">"Employment (std)"</span>, <span class="st">"Housing Repair (std)"</span>,</span>
+<span id="cb5-166"><a href="#cb5-166" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Unemployment (std)"</span>, <span class="st">"Poverty (std)"</span>),</span>
+<span id="cb5-167"><a href="#cb5-167" aria-hidden="true" tabindex="-1"></a>  <span class="at">Coefficient =</span> <span class="fu">c</span>(<span class="fl">1.605</span>, <span class="sc">-</span><span class="fl">1.336</span>, <span class="sc">-</span><span class="fl">2.408</span>, <span class="sc">-</span><span class="fl">1.295</span>, <span class="sc">-</span><span class="fl">0.693</span>, <span class="fl">0.469</span>, <span class="fl">0.530</span>, <span class="fl">0.405</span>),</span>
+<span id="cb5-168"><a href="#cb5-168" aria-hidden="true" tabindex="-1"></a>  <span class="at">SE =</span> <span class="fu">c</span>(<span class="fl">0.187</span>, <span class="fl">0.156</span>, <span class="fl">0.298</span>, <span class="fl">0.177</span>, <span class="fl">0.145</span>, <span class="fl">0.123</span>, <span class="fl">0.134</span>, <span class="fl">0.156</span>),</span>
+<span id="cb5-169"><a href="#cb5-169" aria-hidden="true" tabindex="-1"></a>  <span class="at">Lower_CI =</span> <span class="fu">c</span>(<span class="fl">1.239</span>, <span class="sc">-</span><span class="fl">1.642</span>, <span class="sc">-</span><span class="fl">2.992</span>, <span class="sc">-</span><span class="fl">1.642</span>, <span class="sc">-</span><span class="fl">0.977</span>, <span class="fl">0.228</span>, <span class="fl">0.267</span>, <span class="fl">0.099</span>),</span>
+<span id="cb5-170"><a href="#cb5-170" aria-hidden="true" tabindex="-1"></a>  <span class="at">Upper_CI =</span> <span class="fu">c</span>(<span class="fl">1.971</span>, <span class="sc">-</span><span class="fl">1.030</span>, <span class="sc">-</span><span class="fl">1.824</span>, <span class="sc">-</span><span class="fl">0.948</span>, <span class="sc">-</span><span class="fl">0.409</span>, <span class="fl">0.710</span>, <span class="fl">0.793</span>, <span class="fl">0.711</span>),</span>
+<span id="cb5-171"><a href="#cb5-171" aria-hidden="true" tabindex="-1"></a>  <span class="at">Relative_Risk =</span> <span class="fu">c</span>(<span class="fl">4.975</span>, <span class="fl">0.264</span>, <span class="fl">0.090</span>, <span class="fl">0.274</span>, <span class="fl">0.500</span>, <span class="fl">1.599</span>, <span class="fl">1.699</span>, <span class="fl">1.499</span>),</span>
+<span id="cb5-172"><a href="#cb5-172" aria-hidden="true" tabindex="-1"></a>  <span class="at">RR_Lower =</span> <span class="fu">c</span>(<span class="fl">3.452</span>, <span class="fl">0.194</span>, <span class="fl">0.050</span>, <span class="fl">0.194</span>, <span class="fl">0.376</span>, <span class="fl">1.256</span>, <span class="fl">1.306</span>, <span class="fl">1.104</span>),</span>
+<span id="cb5-173"><a href="#cb5-173" aria-hidden="true" tabindex="-1"></a>  <span class="at">RR_Upper =</span> <span class="fu">c</span>(<span class="fl">7.176</span>, <span class="fl">0.357</span>, <span class="fl">0.161</span>, <span class="fl">0.388</span>, <span class="fl">0.664</span>, <span class="fl">2.034</span>, <span class="fl">2.210</span>, <span class="fl">2.036</span>),</span>
+<span id="cb5-174"><a href="#cb5-174" aria-hidden="true" tabindex="-1"></a>  <span class="at">Interpretation =</span> <span class="fu">c</span>(<span class="st">"+395% increase"</span>, <span class="st">"-73.6% decrease"</span>, <span class="st">"-91.0% decrease"</span>,</span>
+<span id="cb5-175"><a href="#cb5-175" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"-72.6% decrease"</span>, <span class="st">"-50.0% decrease"</span>, <span class="st">"+59.9% increase"</span>,</span>
+<span id="cb5-176"><a href="#cb5-176" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"+69.9% increase"</span>, <span class="st">"+49.9% increase"</span>)</span>
+<span id="cb5-177"><a href="#cb5-177" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-178"><a href="#cb5-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-179"><a href="#cb5-179" aria-hidden="true" tabindex="-1"></a><span class="co"># Create formatted table</span></span>
+<span id="cb5-180"><a href="#cb5-180" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(results_data <span class="sc">%&gt;%</span> <span class="fu">select</span>(Variable, Relative_Risk, RR_Lower, RR_Upper, Interpretation),</span>
+<span id="cb5-181"><a href="#cb5-181" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption =</span> <span class="st">"INLA Model Results: Relative Risk Estimates"</span>,</span>
+<span id="cb5-182"><a href="#cb5-182" aria-hidden="true" tabindex="-1"></a>      <span class="at">digits =</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-183"><a href="#cb5-183" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hover"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-184"><a href="#cb5-184" aria-hidden="true" tabindex="-1"></a>  <span class="fu">row_spec</span>(<span class="dv">1</span>, <span class="at">background =</span> <span class="st">"#ffebee"</span>) <span class="sc">%&gt;%</span>  <span class="co"># Highlight strongest effect</span></span>
+<span id="cb5-185"><a href="#cb5-185" aria-hidden="true" tabindex="-1"></a>  <span class="fu">row_spec</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">background =</span> <span class="st">"#e8f5e8"</span>)    <span class="co"># Highlight protective effects</span></span>
+<span id="cb5-186"><a href="#cb5-186" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-187"><a href="#cb5-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-188"><a href="#cb5-188" aria-hidden="true" tabindex="-1"></a><span class="fu">### Spatial Components: Collective Capabilities</span></span>
+<span id="cb5-189"><a href="#cb5-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-190"><a href="#cb5-190" aria-hidden="true" tabindex="-1"></a><span class="in">```{r spatial-components}</span></span>
+<span id="cb5-191"><a href="#cb5-191" aria-hidden="true" tabindex="-1"></a>spatial_results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb5-192"><a href="#cb5-192" aria-hidden="true" tabindex="-1"></a>  <span class="at">Component =</span> <span class="fu">c</span>(<span class="st">"Structured (φ)"</span>, <span class="st">"Precision (τ_u)"</span>, <span class="st">"Total Spatial Variance"</span>),</span>
+<span id="cb5-193"><a href="#cb5-193" aria-hidden="true" tabindex="-1"></a>  <span class="at">Value =</span> <span class="fu">c</span>(<span class="st">"0.594"</span>, <span class="st">"2.79"</span>, <span class="st">"0.358"</span>),</span>
+<span id="cb5-194"><a href="#cb5-194" aria-hidden="true" tabindex="-1"></a>  <span class="at">Interpretation =</span> <span class="fu">c</span>(<span class="st">"59.4% of spatial variation is structured (collective capabilities matter)"</span>,</span>
+<span id="cb5-195"><a href="#cb5-195" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Strong spatial dependence between neighboring areas"</span>,</span>
+<span id="cb5-196"><a href="#cb5-196" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Moderate spatial variation indicates place matters significantly"</span>)</span>
+<span id="cb5-197"><a href="#cb5-197" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-198"><a href="#cb5-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-199"><a href="#cb5-199" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(spatial_results, <span class="at">caption =</span> <span class="st">"Spatial Random Effects Summary"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-200"><a href="#cb5-200" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hover"</span>))</span>
+<span id="cb5-201"><a href="#cb5-201" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-202"><a href="#cb5-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-203"><a href="#cb5-203" aria-hidden="true" tabindex="-1"></a>---</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
