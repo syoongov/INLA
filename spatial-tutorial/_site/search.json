@@ -424,7 +424,7 @@
     "href": "descriptive.html",
     "title": "Descriptive Data",
     "section": "",
-    "text": "1 Spatial Distribution of Utah’s Correctional Population"
+    "text": "1 Spatial Distribution of Utah’s Correctional Population\n\n\n\n\n\n\n\n2 Correctional Population Outlier Analysis\nThis section presents outlier analysis for correctional population counts (corr_pop) and rates (corr_rate) using different outlier treatment approaches.\nThis analysis examines correctional population patterns using: - Population Counts (corr_pop): Raw counts of individuals under supervision in each census tract - Population Rates (corr_rate): Rates per 1,000 population for standardized comparison in each census tractw\n\n\nDistribution Histogram: Correctional Population\nDistribution Histogram: Correctional Rate\n\n\n\n\n\n\n\n\n\n\n\n3 Distribution Tables\n\n\nPopulation Counts - Low Outlier Treatment\nPopulation Counts - High Outlier Treatment\nPopulation Rates - Low Outlier Treatment\nPopulation Rates - High Outlier Treatment\nCombined Tables\n\n\n\n\n\n\n\ndatatables\n\n\n\n\n\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\ndatatables\n\n\n\n\n\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\ndatatables\n\n\n\n\n\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\ndatatables\n\n\n\n\n\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\ndatatables"
   },
   {
     "objectID": "results.html#relative-risk-air-quality-impact-on-supervision",
@@ -523,5 +523,19 @@
     "title": "Empirical Results",
     "section": "\n4.1 Interpretation",
     "text": "4.1 Interpretation\nThis interactive network shows how diesel particulate matter (highlighted in larger size) serves as a critical conversion factor that transforms environmental racism into criminal justice involvement through multiple pathways:\n\n\nClick on nodes to highlight connected pathways\n\nHover for detailed explanations\n\nDrag nodes to rearrange the layout\n\nUse the legend to focus on specific categories"
+  },
+  {
+    "objectID": "descriptive.html#combined-tables",
+    "href": "descriptive.html#combined-tables",
+    "title": "Descriptive Data",
+    "section": "\n3.2 Combined Tables",
+    "text": "3.2 Combined Tables\n\n\nBoth Population & Rate Tables are presented below including both HIGH and LOW outliers with flags for treatment center in census tract\n\n\n\n🔍 View Full Size\n\n\n\n\n✕ Close"
+  },
+  {
+    "objectID": "descriptive.html#summary-table",
+    "href": "descriptive.html#summary-table",
+    "title": "Descriptive Data",
+    "section": "\n3.1 Summary Table",
+    "text": "3.1 Summary Table\n\n\n\n\nPopulation Counts 🔢 - Low Outlier Treatment\nPopulation Counts 🔢 - High Outlier Treatment\nPopulation Rates 📊 - Low Outlier Treatment\nPopulation Rates 📊 - High Outlier Treatment\n\n\n\n\n\n🔍 View Full Size\n\n\n\n\n✕ Close\n\n\n\n\n\n\n\n\n\n🔍 View Full Size\n\n\n\n\n✕ Close\n\n\n\n\n\n\n\n\n\n🔍 View Full Size\n\n\n\n\n✕ Close\n\n\n\n\n\n\n\n\n\n🔍 View Full Size\n\n\n\n\n✕ Close"
   }
 ]

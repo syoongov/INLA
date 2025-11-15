@@ -12,6 +12,7 @@ library(ggplot2)
 library(dplyr)
 library(plotly)
 library(sf)
+library(htmltools)
 
 ```
 
@@ -46,6 +47,414 @@ leaflet(model_data_hpi) %>%
     values = model_data_hpi$corr_rt,
     title = "Correctional Population Rate </br>per 1000 individuals"
   )
+```
+
+# Correctional Population Outlier Analysis
+
+This section presents outlier analysis for correctional population counts (`corr_pop`) and rates (`corr_rate`) using different outlier treatment approaches.
+
+This analysis examines correctional population patterns using:
+
+- **Population Counts (`corr_pop`)**: Raw counts of individuals under supervision in each census tract
+
+- **Population Rates (`corr_rate`)**: Rates per 1,000 population for standardized comparison in each census tractw
+
+::: {.panel-tabset}
+## Distribution Histogram: Correctional Population
+```{r}
+#| echo: false
+#| results: asis
+htmltools::tags$iframe(
+  src = "descriptive/corr_pop_histogram.html",
+  width = "100%",
+  height = "600px",
+  frameborder = "0",
+  style = "border: none;"
+)
+
+```
+
+## Distribution Histogram: Correctional Rate
+```{r}
+#| echo: false
+#| results: asis
+htmltools::tags$iframe(
+  src = "descriptive/corr_rate_histogram.html",
+  width = "100%",
+  height = "600px",
+  frameborder = "0",
+  style = "border: none;"
+)
+```
+
+:::
+
+# Distribution Tables
+
+- **High Outliers (95th Percentile) Correctional Population**: 196.8
+
+- **High Outliers (95th Percentile) Correctional Rate**: 45.69
+
+- **Low Outliers (5th Percentile) Correctional Population**: 11
+
+- **Low Outliers (5th Percentile) Correctional Rate**: 2.73
+
+
+## Summary Table
+```{r}
+#| echo: false
+#| results: asis
+htmltools::tags$iframe(
+  src = "descriptive/summary_table_flextable.html",
+  width = "100%",
+  height = "600px", 
+  frameborder = "0"
+)
+
+```
+
+
+<br>
+
+::: {.panel-tabset}
+
+## Population Counts 🔢 - Low Outlier Treatment
+```{r}
+#| echo: false
+#| results: asis
+
+#htmltools::includeHTML("descriptive/corr_pop_LOW_outliers_table.html")
+
+htmltools::div(
+  # Inline table (smaller)
+  htmltools::div(
+    style = "position: relative; border: 1px solid #ddd; margin: 1rem 0;",
+    htmltools::tags$button(
+      onclick = "openModal('table-modal')",
+      style = "position: absolute; top: 5px; right: 5px; z-index: 100; background: #28a745; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer;",
+      "🔍 View Full Size"
+    ),
+    htmltools::tags$iframe(
+      src = "descriptive/corr_pop_LOW_outliers_table.html",
+      width = "100%",
+      height = "400px",
+      frameborder = "0",
+      style = "transform: scale(0.8); transform-origin: top left; width: 125%; height: 500px;"
+    )
+  ),
+  
+  # Modal overlay
+  htmltools::div(
+    id = "table-modal",
+    style = "display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);",
+    htmltools::div(
+      style = "position: relative; margin: 2% auto; width: 95%; height: 90%; background: white; border-radius: 8px; padding: 20px;",
+      htmltools::tags$button(
+        onclick = "closeModal('table-modal')",
+        style = "position: absolute; top: 10px; right: 15px; background: #dc3545; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-weight: bold;",
+        "✕ Close"
+      ),
+      htmltools::tags$iframe(
+        src = "descriptive/corr_pop_LOW_outliers_table.html",
+        width = "100%",
+        height = "95%",
+        frameborder = "0"
+      )
+    )
+  ),
+  
+  htmltools::tags$script(HTML("
+    function openModal(id) {
+      document.getElementById(id).style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+    
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+      const modal = document.getElementById('table-modal');
+      if (event.target === modal) {
+        closeModal('table-modal');
+      }
+    }
+  "))
+)
+```
+
+## Population Counts 🔢 - High Outlier Treatment
+```{r}
+#| echo: false
+#| results: asis
+#htmltools::includeHTML("descriptive/corr_pop_HIGH_outliers_table.html")
+
+htmltools::div(
+  # Inline table (smaller)
+  htmltools::div(
+    style = "position: relative; border: 1px solid #ddd; margin: 1rem 0;",
+    htmltools::tags$button(
+      onclick = "openModal('table-modal')",
+      style = "position: absolute; top: 5px; right: 5px; z-index: 100; background: #28a745; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer;",
+      "🔍 View Full Size"
+    ),
+    htmltools::tags$iframe(
+      src = "descriptive/corr_pop_HIGH_outliers_table.html",
+      width = "100%",
+      height = "400px",
+      frameborder = "0",
+      style = "transform: scale(0.8); transform-origin: top left; width: 125%; height: 500px;"
+    )
+  ),
+  
+  # Modal overlay
+  htmltools::div(
+    id = "table-modal",
+    style = "display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);",
+    htmltools::div(
+      style = "position: relative; margin: 2% auto; width: 95%; height: 90%; background: white; border-radius: 8px; padding: 20px;",
+      htmltools::tags$button(
+        onclick = "closeModal('table-modal')",
+        style = "position: absolute; top: 10px; right: 15px; background: #dc3545; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-weight: bold;",
+        "✕ Close"
+      ),
+      htmltools::tags$iframe(
+        src = "descriptive/corr_pop_HIGH_outliers_table.html",
+        width = "100%",
+        height = "95%",
+        frameborder = "0"
+      )
+    )
+  ),
+  
+  htmltools::tags$script(HTML("
+    function openModal(id) {
+      document.getElementById(id).style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+    
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+      const modal = document.getElementById('table-modal');
+      if (event.target === modal) {
+        closeModal('table-modal');
+      }
+    }
+  "))
+)
+
+```
+
+## Population Rates 📊 - Low Outlier Treatment
+```{r}
+#| echo: false
+#| results: asis
+#htmltools::includeHTML("descriptive/corr_rate_LOW_outliers_table.html")
+
+htmltools::div(
+  # Inline table (smaller)
+  htmltools::div(
+    style = "position: relative; border: 1px solid #ddd; margin: 1rem 0;",
+    htmltools::tags$button(
+      onclick = "openModal('table-modal')",
+      style = "position: absolute; top: 5px; right: 5px; z-index: 100; background: #28a745; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer;",
+      "🔍 View Full Size"
+    ),
+    htmltools::tags$iframe(
+      src = "descriptive/corr_rate_LOW_outliers_table.html",
+      width = "100%",
+      height = "400px",
+      frameborder = "0",
+      style = "transform: scale(0.8); transform-origin: top left; width: 125%; height: 500px;"
+    )
+  ),
+  
+  # Modal overlay
+  htmltools::div(
+    id = "table-modal",
+    style = "display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);",
+    htmltools::div(
+      style = "position: relative; margin: 2% auto; width: 95%; height: 90%; background: white; border-radius: 8px; padding: 20px;",
+      htmltools::tags$button(
+        onclick = "closeModal('table-modal')",
+        style = "position: absolute; top: 10px; right: 15px; background: #dc3545; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-weight: bold;",
+        "✕ Close"
+      ),
+      htmltools::tags$iframe(
+        src = "descriptive/corr_rate_LOW_outliers_table.html",
+        width = "100%",
+        height = "95%",
+        frameborder = "0"
+      )
+    )
+  ),
+  
+  htmltools::tags$script(HTML("
+    function openModal(id) {
+      document.getElementById(id).style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+    
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+      const modal = document.getElementById('table-modal');
+      if (event.target === modal) {
+        closeModal('table-modal');
+      }
+    }
+  "))
+)
+
+```
+
+## Population Rates 📊 - High Outlier Treatment
+```{r}
+#| echo: false
+#| results: asis
+#htmltools::includeHTML("descriptive/corr_rate_HIGH_outliers_table.html")
+
+htmltools::div(
+  # Inline table (smaller)
+  htmltools::div(
+    style = "position: relative; border: 1px solid #ddd; margin: 1rem 0;",
+    htmltools::tags$button(
+      onclick = "openModal('table-modal')",
+      style = "position: absolute; top: 5px; right: 5px; z-index: 100; background: #28a745; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer;",
+      "🔍 View Full Size"
+    ),
+    htmltools::tags$iframe(
+      src = "descriptive/corr_rate_HIGH_outliers_table.html",
+      width = "100%",
+      height = "400px",
+      frameborder = "0",
+      style = "transform: scale(0.8); transform-origin: top left; width: 125%; height: 500px;"
+    )
+  ),
+  
+  # Modal overlay
+  htmltools::div(
+    id = "table-modal",
+    style = "display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);",
+    htmltools::div(
+      style = "position: relative; margin: 2% auto; width: 95%; height: 90%; background: white; border-radius: 8px; padding: 20px;",
+      htmltools::tags$button(
+        onclick = "closeModal('table-modal')",
+        style = "position: absolute; top: 10px; right: 15px; background: #dc3545; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-weight: bold;",
+        "✕ Close"
+      ),
+      htmltools::tags$iframe(
+        src = "descriptive/corr_pop_HIGH_outliers_table.html",
+        width = "100%",
+        height = "95%",
+        frameborder = "0"
+      )
+    )
+  ),
+  
+  htmltools::tags$script(HTML("
+    function openModal(id) {
+      document.getElementById(id).style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+    
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+      const modal = document.getElementById('table-modal');
+      if (event.target === modal) {
+        closeModal('table-modal');
+      }
+    }
+  "))
+)
+
+```
+
+:::
+
+## Combined Tables
+- **Both Population & Rate Tables** are presented below including both HIGH and LOW outliers with flags for treatment center in census tract 
+
+```{r}
+#| echo: false
+#| results: asis
+#htmltools::includeHTML("descriptive/corr_pop_outliers_table.html")
+
+htmltools::div(
+  # Inline table (smaller)
+  htmltools::div(
+    style = "position: relative; border: 1px solid #ddd; margin: 1rem 0;",
+    htmltools::tags$button(
+      onclick = "openModal('table-modal')",
+      style = "position: absolute; top: 5px; right: 5px; z-index: 100; background: #28a745; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer;",
+      "🔍 View Full Size"
+    ),
+    htmltools::tags$iframe(
+      src = "descriptive/corr_pop_outliers_table.html",
+      width = "100%",
+      height = "400px",
+      frameborder = "0",
+      style = "transform: scale(0.8); transform-origin: top left; width: 125%; height: 500px;"
+    )
+  ),
+  
+  # Modal overlay
+  htmltools::div(
+    id = "table-modal",
+    style = "display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);",
+    htmltools::div(
+      style = "position: relative; margin: 2% auto; width: 95%; height: 90%; background: white; border-radius: 8px; padding: 20px;",
+      htmltools::tags$button(
+        onclick = "closeModal('table-modal')",
+        style = "position: absolute; top: 10px; right: 15px; background: #dc3545; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-weight: bold;",
+        "✕ Close"
+      ),
+      htmltools::tags$iframe(
+        src = "descriptive/corr_pop_outliers_table.html",
+        width = "100%",
+        height = "95%",
+        frameborder = "0"
+      )
+    )
+  ),
+  
+  htmltools::tags$script(HTML("
+    function openModal(id) {
+      document.getElementById(id).style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+    
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+      const modal = document.getElementById('table-modal');
+      if (event.target === modal) {
+        closeModal('table-modal');
+      }
+    }
+  "))
+)
+
 ```
 
 
