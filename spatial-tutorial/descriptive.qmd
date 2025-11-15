@@ -118,19 +118,17 @@ htmltools::tags$iframe(
 
 ::: {.panel-tabset}
 
-## Population Counts 🔢 - Low Outlier Treatment
-```{r}
+## Population Counts - Low Outlier Treatment
+````{r}
 #| echo: false
 #| results: asis
-
-#htmltools::includeHTML("descriptive/corr_pop_LOW_outliers_table.html")
 
 htmltools::div(
   # Inline table (smaller)
   htmltools::div(
     style = "position: relative; border: 1px solid #ddd; margin: 1rem 0;",
     htmltools::tags$button(
-      onclick = "openModal('table-modal')",
+      onclick = "openModal('table-modal-1')",  # Unique ID: table-modal-1
       style = "position: absolute; top: 5px; right: 5px; z-index: 100; background: #28a745; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer;",
       "🔍 View Full Size"
     ),
@@ -143,14 +141,14 @@ htmltools::div(
     )
   ),
   
-  # Modal overlay
+  # Modal overlay with unique ID
   htmltools::div(
-    id = "table-modal",
+    id = "table-modal-1",  # Unique ID: table-modal-1
     style = "display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);",
     htmltools::div(
       style = "position: relative; margin: 2% auto; width: 95%; height: 90%; background: white; border-radius: 8px; padding: 20px;",
       htmltools::tags$button(
-        onclick = "closeModal('table-modal')",
+        onclick = "closeModal('table-modal-1')",  # Unique ID: table-modal-1
         style = "position: absolute; top: 10px; right: 15px; background: #dc3545; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-weight: bold;",
         "✕ Close"
       ),
@@ -161,42 +159,21 @@ htmltools::div(
         frameborder = "0"
       )
     )
-  ),
-  
-  htmltools::tags$script(HTML("
-    function openModal(id) {
-      document.getElementById(id).style.display = 'block';
-      document.body.style.overflow = 'hidden';
-    }
-    
-    function closeModal(id) {
-      document.getElementById(id).style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
-    
-    // Close modal when clicking outside
-    window.onclick = function(event) {
-      const modal = document.getElementById('table-modal');
-      if (event.target === modal) {
-        closeModal('table-modal');
-      }
-    }
-  "))
+  )
 )
-```
+````
 
-## Population Counts 🔢 - High Outlier Treatment
-```{r}
+## Population Counts - High Outlier Treatment
+````{r}
 #| echo: false
 #| results: asis
-#htmltools::includeHTML("descriptive/corr_pop_HIGH_outliers_table.html")
 
 htmltools::div(
   # Inline table (smaller)
   htmltools::div(
     style = "position: relative; border: 1px solid #ddd; margin: 1rem 0;",
     htmltools::tags$button(
-      onclick = "openModal('table-modal')",
+      onclick = "openModal('table-modal-2')",  # Unique ID: table-modal-2
       style = "position: absolute; top: 5px; right: 5px; z-index: 100; background: #28a745; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer;",
       "🔍 View Full Size"
     ),
@@ -209,14 +186,14 @@ htmltools::div(
     )
   ),
   
-  # Modal overlay
+  # Modal overlay with unique ID
   htmltools::div(
-    id = "table-modal",
+    id = "table-modal-2",  # Unique ID: table-modal-2
     style = "display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);",
     htmltools::div(
       style = "position: relative; margin: 2% auto; width: 95%; height: 90%; background: white; border-radius: 8px; padding: 20px;",
       htmltools::tags$button(
-        onclick = "closeModal('table-modal')",
+        onclick = "closeModal('table-modal-2')",  # Unique ID: table-modal-2
         style = "position: absolute; top: 10px; right: 15px; background: #dc3545; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-weight: bold;",
         "✕ Close"
       ),
@@ -227,43 +204,21 @@ htmltools::div(
         frameborder = "0"
       )
     )
-  ),
-  
-  htmltools::tags$script(HTML("
-    function openModal(id) {
-      document.getElementById(id).style.display = 'block';
-      document.body.style.overflow = 'hidden';
-    }
-    
-    function closeModal(id) {
-      document.getElementById(id).style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
-    
-    // Close modal when clicking outside
-    window.onclick = function(event) {
-      const modal = document.getElementById('table-modal');
-      if (event.target === modal) {
-        closeModal('table-modal');
-      }
-    }
-  "))
+  )
 )
+````
 
-```
-
-## Population Rates 📊 - Low Outlier Treatment
-```{r}
+## Population Rates - Low Outlier Treatment
+````{r}
 #| echo: false
 #| results: asis
-#htmltools::includeHTML("descriptive/corr_rate_LOW_outliers_table.html")
 
 htmltools::div(
   # Inline table (smaller)
   htmltools::div(
     style = "position: relative; border: 1px solid #ddd; margin: 1rem 0;",
     htmltools::tags$button(
-      onclick = "openModal('table-modal')",
+      onclick = "openModal('table-modal-3')",  # Unique ID: table-modal-3
       style = "position: absolute; top: 5px; right: 5px; z-index: 100; background: #28a745; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer;",
       "🔍 View Full Size"
     ),
@@ -276,14 +231,14 @@ htmltools::div(
     )
   ),
   
-  # Modal overlay
+  # Modal overlay with unique ID
   htmltools::div(
-    id = "table-modal",
+    id = "table-modal-3",  # Unique ID: table-modal-3
     style = "display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);",
     htmltools::div(
       style = "position: relative; margin: 2% auto; width: 95%; height: 90%; background: white; border-radius: 8px; padding: 20px;",
       htmltools::tags$button(
-        onclick = "closeModal('table-modal')",
+        onclick = "closeModal('table-modal-3')",  # Unique ID: table-modal-3
         style = "position: absolute; top: 10px; right: 15px; background: #dc3545; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-weight: bold;",
         "✕ Close"
       ),
@@ -294,43 +249,23 @@ htmltools::div(
         frameborder = "0"
       )
     )
-  ),
-  
-  htmltools::tags$script(HTML("
-    function openModal(id) {
-      document.getElementById(id).style.display = 'block';
-      document.body.style.overflow = 'hidden';
-    }
-    
-    function closeModal(id) {
-      document.getElementById(id).style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
-    
-    // Close modal when clicking outside
-    window.onclick = function(event) {
-      const modal = document.getElementById('table-modal');
-      if (event.target === modal) {
-        closeModal('table-modal');
-      }
-    }
-  "))
+  )
 )
+````
 
-```
+## Population Rates - High Outlier Treatment
+**Note:** View Full Size of Table, Make sure to scroll to the bottom of the table to see pages of the table to see every outlier observation!
 
-## Population Rates 📊 - High Outlier Treatment
-```{r}
+````{r}
 #| echo: false
 #| results: asis
-#htmltools::includeHTML("descriptive/corr_rate_HIGH_outliers_table.html")
 
 htmltools::div(
   # Inline table (smaller)
   htmltools::div(
     style = "position: relative; border: 1px solid #ddd; margin: 1rem 0;",
     htmltools::tags$button(
-      onclick = "openModal('table-modal')",
+      onclick = "openModal('table-modal-4')",  # Unique ID: table-modal-4
       style = "position: absolute; top: 5px; right: 5px; z-index: 100; background: #28a745; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer;",
       "🔍 View Full Size"
     ),
@@ -343,48 +278,27 @@ htmltools::div(
     )
   ),
   
-  # Modal overlay
+  # Modal overlay with unique ID
   htmltools::div(
-    id = "table-modal",
+    id = "table-modal-4",  # Unique ID: table-modal-4
     style = "display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);",
     htmltools::div(
       style = "position: relative; margin: 2% auto; width: 95%; height: 90%; background: white; border-radius: 8px; padding: 20px;",
       htmltools::tags$button(
-        onclick = "closeModal('table-modal')",
+        onclick = "closeModal('table-modal-4')",  # Unique ID: table-modal-4
         style = "position: absolute; top: 10px; right: 15px; background: #dc3545; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-weight: bold;",
         "✕ Close"
       ),
       htmltools::tags$iframe(
-        src = "descriptive/corr_pop_HIGH_outliers_table.html",
+        src = "descriptive/corr_rate_HIGH_outliers_table.html",
         width = "100%",
         height = "95%",
         frameborder = "0"
       )
     )
-  ),
-  
-  htmltools::tags$script(HTML("
-    function openModal(id) {
-      document.getElementById(id).style.display = 'block';
-      document.body.style.overflow = 'hidden';
-    }
-    
-    function closeModal(id) {
-      document.getElementById(id).style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
-    
-    // Close modal when clicking outside
-    window.onclick = function(event) {
-      const modal = document.getElementById('table-modal');
-      if (event.target === modal) {
-        closeModal('table-modal');
-      }
-    }
-  "))
+  )
 )
-
-```
+````
 
 :::
 
@@ -397,16 +311,15 @@ htmltools::div(
 #htmltools::includeHTML("descriptive/corr_pop_outliers_table.html")
 
 htmltools::div(
-  # Inline table (smaller)
   htmltools::div(
     style = "position: relative; border: 1px solid #ddd; margin: 1rem 0;",
     htmltools::tags$button(
-      onclick = "openModal('table-modal')",
+      onclick = "openModal('table-modal-5')",  # Unique ID for combined table
       style = "position: absolute; top: 5px; right: 5px; z-index: 100; background: #28a745; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer;",
       "🔍 View Full Size"
     ),
     htmltools::tags$iframe(
-      src = "descriptive/corr_pop_outliers_table.html",
+      src = "descriptive/combined_outliers_analysis.html",  # Make sure this is the correct file
       width = "100%",
       height = "400px",
       frameborder = "0",
@@ -414,47 +327,56 @@ htmltools::div(
     )
   ),
   
-  # Modal overlay
   htmltools::div(
-    id = "table-modal",
+    id = "table-modal-5",
     style = "display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);",
     htmltools::div(
       style = "position: relative; margin: 2% auto; width: 95%; height: 90%; background: white; border-radius: 8px; padding: 20px;",
       htmltools::tags$button(
-        onclick = "closeModal('table-modal')",
+        onclick = "closeModal('table-modal-5')",
         style = "position: absolute; top: 10px; right: 15px; background: #dc3545; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-weight: bold;",
         "✕ Close"
       ),
       htmltools::tags$iframe(
-        src = "descriptive/corr_pop_outliers_table.html",
+        src = "descriptive/combined_outliers_analysis.html",
         width = "100%",
         height = "95%",
         frameborder = "0"
       )
     )
-  ),
-  
-  htmltools::tags$script(HTML("
-    function openModal(id) {
-      document.getElementById(id).style.display = 'block';
-      document.body.style.overflow = 'hidden';
-    }
-    
-    function closeModal(id) {
-      document.getElementById(id).style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
-    
-    // Close modal when clicking outside
-    window.onclick = function(event) {
-      const modal = document.getElementById('table-modal');
-      if (event.target === modal) {
-        closeModal('table-modal');
-      }
-    }
-  "))
+  )
 )
 
 ```
+
+
+````{r}
+#| echo: false
+#| results: asis
+
+htmltools::tags$script(HTML("
+  function openModal(id) {
+    document.getElementById(id).style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  }
+  
+  function closeModal(id) {
+    document.getElementById(id).style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+  
+  // Close modal when clicking outside
+  window.onclick = function(event) {
+    // Check all possible modal IDs
+    const modalIds = ['table-modal-1', 'table-modal-2', 'table-modal-3', 'table-modal-4', 'table-modal-5'];
+    modalIds.forEach(function(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal && event.target === modal) {
+        closeModal(modalId);
+      }
+    });
+  }
+"))
+````
 
 
